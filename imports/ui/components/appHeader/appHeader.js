@@ -1,17 +1,17 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import template from './webHeader.html';
+import template from './appHeader.html';
 
-const name = 'webHeader';
+const name = 'appHeader';
 
-class WebHeader {}
+class AppHeader {}
 
 // create a module with a componente
 export default angular.module(name, [
   angularMeteor ])
   .component(name, {
     templateUrl: template,
-    controller: WebHeader,
+    controller: AppHeader,
     controllerAs: name
   });

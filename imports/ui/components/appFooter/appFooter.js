@@ -1,11 +1,11 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import template from './webFooter.html';
+import template from './appFooter.html';
 
-const name = 'webFooter'; // Es lo que otorga el elemento de HTML: <web-footer></web-footer> 
+const name = 'appFooter'; // Es lo que otorga el elemento de HTML: <web-footer></web-footer>
 
-class WebFooter {}
+class AppFooter {}
 
 // create a module with a componente
 export default angular.module( name, [
@@ -13,7 +13,7 @@ export default angular.module( name, [
   angularMeteor ])
     .component(name, {
       templateUrl: template,
-      controller: WebFooter,
+      controller: AppFooter,
       controllerAs: name
     }
 );

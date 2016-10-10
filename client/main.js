@@ -1,13 +1,11 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import { name as webMain } from '../imports/ui/components/webMain/webMain';
-import { name as webHeader } from '../imports/ui/components/webHeader/webHeader';
-import { name as webFooter } from '../imports/ui/components/webFooter/webFooter';
+import { name as app } from '../imports/ui/components/app/app';
+import { name as landing } from '../imports/ui/components/landing/landing';
 
-angular.module('influyentes-app', [
+angular.module('influyentes', [
   angularMeteor,
-  webMain,
-  webHeader,
-  webFooter
+  app,
+  landing
 ]);

@@ -2,10 +2,11 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
-import template from './webMain.html';
-const name = 'webMain';
+import template from './appMain.html';
 
-class WebMain {}
+const name = 'appMain';
+
+class AppMain {}
 
 // create a module with a componente
 export default angular.module(name, [
@@ -13,7 +14,7 @@ export default angular.module(name, [
   angularMeteor ])
   .component(name, {
     templateUrl: template,
-    controller: WebMain,
+    controller: AppMain,
     controllerAs: name
   })
   .config(config)

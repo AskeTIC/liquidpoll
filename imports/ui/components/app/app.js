@@ -1,9 +1,9 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import { name as appMain } from '../imports/ui/components/appMain/appMain';
-import { name as appHeader } from '../imports/ui/components/appHeader/appHeader';
-import { name as appFooter } from '../imports/ui/components/appFooter/appFooter';
+import { name as appMain } from '../appMain/appMain';
+import { name as appHeader } from '../appHeader/appHeader';
+import { name as appFooter } from '../appFooter/appFooter';
 
 import template from './app.html';
 
