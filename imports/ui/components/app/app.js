@@ -23,4 +23,4 @@ export default angular.module(name, [
     templateUrl: template,
     controller: App,
     controllerAs: name
-  })
+  });

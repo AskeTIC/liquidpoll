@@ -25,4 +25,4 @@ export default angular.module(name, [
     templateUrl: template,
     controller: Landing,
     controllerAs: name
-  })
+  });
