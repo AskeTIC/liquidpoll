@@ -1,22 +1,14 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+import angular from 'angular';
+import angularMeteor from 'angular-meteor';
+//import angularElastic from 'angular-elastic';
 
-import './main.html';
+import { name as webMain } from '../imports/ui/components/webMain/webMain';
+import { name as webHeader } from '../imports/ui/components/webHeader/webHeader';
+import { name as webFooter } from '../imports/ui/components/webFooter/webFooter';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
-
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
-
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
-});
+angular.module('webapp', [
+  angularMeteor,
+  webMain,
+  webHeader,
+  webFooter
+]);
