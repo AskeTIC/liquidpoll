@@ -4,6 +4,8 @@ import uiRouter from 'angular-ui-router';
 
 import { name as viewParliamentList } from '../viewParliamentList/viewParliamentList';
 import { name as viewAgoraList } from '../viewAgoraList/viewAgoraList';
+import { name as viewParliament } from '../viewParliament/viewParliament';
+import { name as viewAgora } from '../viewAgora/viewAgora';
 
 
 import template from './webMain.html';
@@ -16,7 +18,9 @@ export default angular.module(name, [
   uiRouter,
   angularMeteor,
   viewAgoraList,
-  viewParliamentList ])
+  viewAgora,
+  viewParliamentList,
+  viewParliament])
   .component(name, {
     templateUrl: template,
     controller: WebMain,
