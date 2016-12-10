@@ -2,8 +2,6 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
-import { name as chartsPie } from '../chartsPie/chartsPie';
-
 import template from './viewAgora.html';
 const name = 'viewAgora';
 

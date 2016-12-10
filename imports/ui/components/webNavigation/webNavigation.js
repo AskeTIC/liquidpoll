@@ -9,9 +9,7 @@ const name = 'webNavigation';
 class WebNavigation {
   constructor($stateParams, $scope, $reactive) {
     'ngInject';
-    $reactive(this).attach($scope);
-    this.helpers({
-    });
+
   }
 
 }
