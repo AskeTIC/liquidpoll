@@ -1,6 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
-import uiRouter from 'angular-ui-router';
+
+//TODO: Recibir por get o post el objeto con el 'parli' en lugar de hacer otra consulta a la BBDD
+import { Agoras } from '../../../api/agoras';
 
 import template from './viewAgora.html';
 const name = 'viewAgora';
@@ -10,7 +12,13 @@ class ViewAgora {
     'ngInject';
 
     this.name = $stateParams.agoraName;
+    $reactive(this).attach($scope);
 
+    this.helpers({
+      agora() {
+        return Agoras.findOne({name: $stateParams.agoraName });
+      }
+    });
   }
 }
 
