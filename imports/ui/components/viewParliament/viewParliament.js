@@ -8,11 +8,8 @@ class ViewParliament {
   constructor($stateParams, $scope, $reactive) {
     'ngInject';
 
-    this.parliamentName = $stateParams.parliamentName;
+    this.name = $stateParams.parliamentName;
 
-    $reactive(this).attach($scope);
-    this.helpers({
-    });
   }
 }
 

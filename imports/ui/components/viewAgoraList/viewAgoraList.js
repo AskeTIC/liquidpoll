@@ -1,6 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
+import { Agoras } from '../../../api/agoras';
 
 import template from './viewAgoraList.html';
 const name = 'viewAgoraList';
@@ -9,7 +10,12 @@ class ViewAgoraList {
   constructor($stateParams, $scope, $reactive) {
     'ngInject';
     $reactive(this).attach($scope);
+    //console.log(Parliaments);
+
     this.helpers({
+      agoras() {
+        return Agoras.find({});
+      }
     });
   }
 }

@@ -1,8 +1,5 @@
 <section class="section-page">
-  <article class="" ui-sref="agora({agoraName: 'argentina'})">
-    agora Argetina
-  </article>
-  <article class="" ui-sref="agora({agoraName: 'españa'})">
-    agora Espatraña
+  <article class="" ui-sref="agora({agoraName: agora.name})" ng-repeat="agora in viewAgoraList.agoras">
+    Ágora {{agora.name | uppercase}}
   </article>
 </section>
