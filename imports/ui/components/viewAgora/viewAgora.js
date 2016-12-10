@@ -16,8 +16,7 @@ class ViewAgora {
 
 // create a module
 export default angular.module(name, [
-  angularMeteor,
-  chartsPie
+  angularMeteor
   ])
 	.component(name, {
 		templateUrl: template,
