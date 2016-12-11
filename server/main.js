@@ -34,11 +34,108 @@ Meteor.startup(() => {
           {name: 'Todo por la plata',
            points: 130,
            percent:null,
+           color:"orange"}
+        ]
+      },
+      {
+        'name': 'españa',
+        'description': 'Parlamento de España',
+        'entities' : [
+          {name: 'PP',
+           points: 250,
+           percent:null,
+           color:"brown" },
+          {name: 'PSOE',
+           points: 200,
+           percent:null,
+           color:"pink"},
+          {name: 'ERC',
+           points: 30,
+           percent:null,
+           color:"blue"},
+          {name: 'PACMA',
+           points: 50,
+           percent:null,
+           color:"lightgreen"},
+          {name: 'Unidos Podemos',
+           points: 220,
+           percent:null,
+           color:"violet"},
+          {name: 'Ciudadanos',
+           points: 130,
+           percent:null,
+           color:"orange"}
+        ]
+      },
+      {
+        'name': 'euskadi',
+        'description': 'Parlamento vasco.',
+        'entities':  [
+          {name: 'PNV',
+           points: 250,
+           percent:null,
+           color:"brown" },
+          {name: 'EH Bildu',
+           points: 200,
+           percent:null,
+           color:"pink"},
+          {name: 'Ciudadanos',
+           points: 30,
+           percent:null,
+           color:"blue"},
+          {name: 'PSOE',
+           points: 50,
+           percent:null,
+           color:"lightgreen"},
+          {name: 'Elkarrekin Podemos',
+           points: 250,
+           percent:null,
+           color:"violet"},
+          {name: 'PP',
+           points: 130,
+           percent:null,
+           color:"orange"}
+        ]
+      }
+    ];
+
+    parliaments.forEach((parli) => {
+      Parliaments.insert(parli)
+    });
+  }
+  if (Agoras.find().count() === 0) {
+    const agoras = [{
+        'name': 'argentina',
+        'description': 'Ágora argentina.',
+        'entities' : [
+          {name: 'Cambiemos',
+           points: 250,
+           percent:null,
+           color:"blue" },
+          {name: 'Frente para la victoria',
+           points: 200,
+           percent:null,
+           color:"pink"},
+          {name: 'Justicia social',
+           points: 30,
+           percent:null,
+           color:"brown"},
+          {name: 'Todo por la plata',
+           points: 50,
+           percent:null,
+           color:"lightgreen"},
+          {name: 'Iluminatis argentinos',
+           points: 250,
+           percent:null,
+           color:"yellow"},
+          {name: 'Partido maligno',
+           points: 130,
+           percent:null,
            color:"orange"},
           {name: 'Agarralo como puedas',
            points: 25,
            percent:null,
-           color:"yellow"},
+           color:"violet"},
           {name: 'Los viejos verdes',
            points: 340,
            percent:null,
@@ -55,12 +152,12 @@ Meteor.startup(() => {
       },
       {
         'name': 'españa',
-        'description': 'Parlamento de España',
+        'description': 'Ágora española',
         'entities' : [
           {name: 'Cambiemos durante 200.000 años',
            points: 250,
            percent:null,
-           color:"brown" },
+           color:"blue" },
           {name: 'Iluminatis del imperio de Espatraña',
            points: 200,
            percent:null,
@@ -68,7 +165,7 @@ Meteor.startup(() => {
           {name: 'Partido Podrido',
            points: 30,
            percent:null,
-           color:"blue"},
+           color:"brown"},
           {name: 'Partido por los animales en el puchero',
            points: 50,
            percent:null,
@@ -80,7 +177,7 @@ Meteor.startup(() => {
           {name: 'Todo por la patria',
            points: 130,
            percent:null,
-           color:"orange"},
+           color:"red"},
           {name: 'Agarralo como puedas II',
            points: 25,
            percent:null,
@@ -92,7 +189,7 @@ Meteor.startup(() => {
           {name: 'Los jovenes imperialistas con el pindar rojo',
            points: 400,
            percent:null,
-           color:"red"},
+           color:"orange"},
           {name: 'Los hombres de negro II',
            points: 450,
            percent:null,
@@ -101,21 +198,21 @@ Meteor.startup(() => {
       },
       {
         'name': 'euskadi',
-        'description': 'Parlamento vasco.',
+        'description': 'Ágora vasca.',
         'entities':  [
-          {name: 'Partido Regionalista Vasco',
+          {name: 'Beltzako gizonak III',
            points: 250,
            percent:null,
-           color:"brown" },
+           color:"lightblue" },
           {name: 'Iluminatis vascos',
            points: 200,
            percent:null,
-           color:"pink"},
+           color:"brown"},
           {name: 'Partido Petaniños',
            points: 30,
            percent:null,
            color:"blue"},
-          {name: 'Partido por los animales en el puchero (a la española)',
+          {name: 'Hartu duzu III',
            points: 50,
            percent:null,
            color:"lightgreen"},
@@ -127,7 +224,7 @@ Meteor.startup(() => {
            points: 130,
            percent:null,
            color:"orange"},
-          {name: 'Hartu duzu III',
+          {name: 'Partido por los animales en el puchero (a la española)',
            points: 25,
            percent:null,
            color:"yellow"},
@@ -139,31 +236,13 @@ Meteor.startup(() => {
            points: 400,
            percent:null,
            color:"red"},
-          {name: 'Beltzako gizonak III',
+          {name: 'Partido Regionalista Vasco',
            points: 450,
            percent:null,
-           color:"lightblue"}
+           color:"pink"}
         ]
       }
     ];
-
-    parliaments.forEach((parli) => {
-      Parliaments.insert(parli)
-    });
-  }
-  if (Agoras.find().count() === 0) {
-    const agoras = [{
-        'name': 'argentina',
-        'description': 'Ágora argentina.'
-      }, {
-        'name': 'españa',
-        'description': 'Ágora española'
-      }, {
-        'name': 'euskadi',
-        'description': 'Ágora vasca.'
-      }
-    ];
-
     agoras.forEach((agora) => {
       Agoras.insert(agora)
     });
