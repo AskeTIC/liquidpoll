@@ -4,6 +4,9 @@ import angularMeteor from 'angular-meteor';
 //TODO: Recibir por get o post el objeto con el 'parli' en lugar de hacer otra consulta a la BBDD
 import { Agoras } from '../../../api/agoras';
 
+//Componentes incluidos (dependencias)
+import { name as chartsBars } from '../chartsBars/chartsBars';
+
 import template from './viewAgora.html';
 const name = 'viewAgora';
 
@@ -11,7 +14,6 @@ class ViewAgora {
   constructor($stateParams, $scope, $reactive) {
     'ngInject';
 
-    this.name = $stateParams.agoraName;
     $reactive(this).attach($scope);
 
     this.helpers({
@@ -24,7 +26,8 @@ class ViewAgora {
 
 // create a module
 export default angular.module(name, [
-  angularMeteor
+  angularMeteor,
+  chartsBars
   ])
 	.component(name, {
 		templateUrl: template,
