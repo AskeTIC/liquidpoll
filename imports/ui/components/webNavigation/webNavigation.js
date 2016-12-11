@@ -1,6 +1,5 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
-import uiRouter from 'angular-ui-router';
 
 import template from './webNavigation.html';
 
@@ -16,7 +15,6 @@ class WebNavigation {
 
 // create a module with a componente
 export default angular.module( name, [
-  uiRouter,
   angularMeteor ])
     .component(name, {
       templateUrl: template,
