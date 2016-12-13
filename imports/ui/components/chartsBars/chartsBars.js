@@ -4,8 +4,6 @@ import angularMeteor from 'angular-meteor';
 import {Bars} from 'asketic-charts';
 import {default as utils} from 'asketic-utils';
 console.log(utils);
-//TODO: Recibir por get o post el objeto con el 'parli' en lugar de hacer otra consulta a la BBDD
-import { Agoras } from '../../../api/agoras';
 
 import template from './chartsBars.html';
 
@@ -16,10 +14,9 @@ class ChartsBars{
     'ngInject';
     $reactive(this).attach($scope);
     console.log($stateParams.agoraName);
-    //recoger las entidades del ágora
-    //TODO: recoger directamente el array de la BBDD
-    var agora = Agoras.findOne({name: $stateParams.agoraName });
-    var entities = agora.entities;
+
+    console.log(this.bars);
+    var entities = this.bars;
 
     //calcular el total de puntos para obtener el 100%
     var total = 0;
@@ -63,6 +60,9 @@ class ChartsBars{
 // create a module
 export default angular.module(name, [angularMeteor])
 	.component(name, {
+    bindings: {
+      bars: '<' //podrá recibir un atributo bars="string" en el elemento HTML. Con un objeto en string.
+    },
 		templateUrl: template,
 		controllerAs: name,
 		controller: ChartsBars

@@ -13,12 +13,17 @@ const name = 'viewAgora';
 class ViewAgora {
   constructor($stateParams, $scope, $reactive) {
     'ngInject';
-
     $reactive(this).attach($scope);
+
+    //recoger las entidades del ágora
+    //TODO: recoger directamente el array de la BBDD
+    //var agora = Agoras.findOne({name: $stateParams.agoraName }, {name: 0, description: 0, entities:1});
+    var agora = Agoras.findOne({name: $stateParams.agoraName });
+    console.log(typeof agora);
 
     this.helpers({
       agora() {
-        return Agoras.findOne({name: $stateParams.agoraName });
+        return agora;
       }
     });
   }
