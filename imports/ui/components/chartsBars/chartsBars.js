@@ -15,15 +15,13 @@ class ChartsBars{
     $reactive(this).attach($scope);
     console.log($stateParams.agoraName);
 
-    console.log(this.bars);
-    var entities = this.bars;
-
     //calcular el total de puntos para obtener el 100%
     var total = 0;
-    for (var i = 0; i < entities.length; i++) {
-      total+=entities[i].points;
+    for (var i = 0; i < this.entities.length; i++) {
+      total+=this.entities[i].points;
     }
-    console.log(entities);
+    console.log(this.entities);
+    console.log(this.space);
 
     //seleccionar el canvas y crear el gráfico
     //TODO: si se contextualiza el id en el HTMl coger con bars-$stateParams.agoraName
@@ -34,11 +32,11 @@ class ChartsBars{
 
     //ordenar el array de menor a mayor e invertir
     //TODO: mejorar arraySort() para invertir en los 2 ordenes y por X atributo.
-    utils.arraySort(entities);
-    entities.reverse();
+    utils.arraySort(this.entities);
+    this.entities.reverse();
 
     //TODO: Este tendrá que estar en helpers y/o methods para ser ejecutado cada vez que hay cambios.
-    barsChart.makeBars(entities);
+    barsChart.makeBars(this.entities);
 
     //TODO: pintar directamente en el sentido correcto, o posibilitar el pintar en los 2 sentidos.
     acomodar(barsChartCanvas);
@@ -61,7 +59,8 @@ class ChartsBars{
 export default angular.module(name, [angularMeteor])
 	.component(name, {
     bindings: {
-      bars: '<' //podrá recibir un atributo bars="string" en el elemento HTML. Con un objeto en string.
+      entities: '<', //podrá recibir un atributo bars="string" en el elemento HTML. Con un objeto en string.
+      space: '@'
     },
 		templateUrl: template,
 		controllerAs: name,
