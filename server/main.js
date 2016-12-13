@@ -3,7 +3,7 @@ import {Parliaments} from '../imports/api/parliaments';
 import {Agoras} from '../imports/api/agoras';
 import {Surveys} from '../imports/api/surveys';
 //console.log(Parliaments);
-console.log(Agoras);
+//console.log(Agoras);
 Meteor.startup(() => {
   // code to run on server at startup
   if (Parliaments.find().count() === 0) {
@@ -98,7 +98,6 @@ Meteor.startup(() => {
         ]
       }
     ];
-
     parliaments.forEach((parli) => {
       Parliaments.insert(parli)
     });
@@ -245,6 +244,92 @@ Meteor.startup(() => {
     ];
     agoras.forEach((agora) => {
       Agoras.insert(agora)
+    });
+  }
+  if (Surveys.find().count() === 0) {
+    const surveys = [{
+        'context': {type: 'agora', name: 'españa'},
+        'question': '¿Estas de acuerdo con la abstención del PSOE ?',
+        'answers' : [
+          {name: 'SI',
+           points: 250,
+           percent:null,
+           color:"green" },
+          {name: 'NO',
+           points: 200,
+           percent:null,
+           color:"red"},
+          {name: 'Me da igual',
+           points: 30,
+           percent:null,
+           color:"lightblue"}
+        ]
+      },
+      {
+        'context': {type: 'agora', name: 'euskadi'},
+        'question': '¿Estarías a favor de la independencia de Euskadi?',
+        'answers' : [
+          {name: 'Si, dependiendo las circustáncias',
+           points: 250,
+           percent:null,
+           color:"lightgreen" },
+          {name: 'Si, en todo caso',
+           points: 200,
+           percent:null,
+           color:"green"},
+          {name: 'No, en ningun caso',
+           points: 30,
+           percent:null,
+           color:"red"},
+          {name: 'Me da igual',
+           points: 50,
+           percent:null,
+           color:"lightblue"}
+        ]
+      },
+      {
+        'context': {type: 'parliament', name: 'euskadi'},
+        'question': '¿Estas a favor del derecho de autodeterminación de Euskadi?',
+        'answers' : [
+          {name: 'Si, y para todas las regiones de España',
+           points: 250,
+           percent:null,
+           color:"lightgreen" },
+          {name: 'Si',
+           points: 200,
+           percent:null,
+           color:"green"},
+          {name: 'No',
+           points: 30,
+           percent:null,
+           color:"red"},
+          {name: 'Me da igual',
+           points: 50,
+           percent:null,
+           color:"lightblue"}
+        ]
+      },
+      {
+        'context': {type: 'parliament', name: 'euskadi'},
+        'question': '¿Apoyas la decisión de no investigar en caso Bidegi?',
+        'answers' : [
+          {name: 'Si',
+           points: 20,
+           percent:null,
+           color:"green"},
+          {name: 'No',
+           points: 3000,
+           percent:null,
+           color:"red"},
+          {name: 'Me da igual',
+           points: 50,
+           percent:null,
+           color:"lightblue"}
+        ]
+      }
+    ];
+    surveys.forEach((agora) => {
+      Surveys.insert(agora)
     });
   }
 });
