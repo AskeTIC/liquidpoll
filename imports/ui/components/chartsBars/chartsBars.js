@@ -14,29 +14,27 @@ class ChartsBars{
     'ngInject';
     $reactive(this).attach($scope);
     console.log($stateParams.agoraName);
+    console.log($stateParams.agoraName);
+    console.log(this.entities);
+    console.log(this.space);
 
     //calcular el total de puntos para obtener el 100%
     var total = 0;
     for (var i = 0; i < this.entities.length; i++) {
       total+=this.entities[i].points;
     }
-    console.log(this.entities);
-    console.log(this.space);
-
-    //seleccionar el canvas y crear el gráfico
-    //TODO: si se contextualiza el id en el HTMl coger con bars-$stateParams.agoraName
-    var barsChartCanvas = document.getElementById('bars');
-    console.log(barsChartCanvas);
-    var barsChart = new Bars(barsChartCanvas, '2d', 20);
-    console.log(barsChart);
 
     //ordenar el array de menor a mayor e invertir
     //TODO: mejorar arraySort() para invertir en los 2 ordenes y por X atributo.
     utils.arraySort(this.entities);
     this.entities.reverse();
 
-    //TODO: Este tendrá que estar en helpers y/o methods para ser ejecutado cada vez que hay cambios.
-    barsChart.makeBars(this.entities);
+    //seleccionar el canvas y crear el gráfico
+    //TODO: si se contextualiza el id en el HTMl coger con bars-$stateParams.agoraName
+    var barsChartCanvas = document.getElementById('bars');
+    console.log(barsChartCanvas);
+    var barsChart = new Bars(barsChartCanvas, { width: 10, div: 2, ctx: '2d'}, this.entities);
+    console.log(barsChart);
 
     //TODO: pintar directamente en el sentido correcto, o posibilitar el pintar en los 2 sentidos.
     acomodar(barsChartCanvas);
