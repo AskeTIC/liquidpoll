@@ -48,6 +48,12 @@ web-header {
 
 	#header .title{
 			/*TODO: aling, margin, color, etc...*/
+			position: absolute;
+			margin-left: 10px;
+			top: -4px;
+			color: #FFF;
+			text-decoration: underline;
+			font-size: 1.1rem;
 		}
 
 	.navigation{
@@ -120,21 +126,27 @@ web-main {
 		text-decoration:underline;
 		font-size: 3vw;
 	}
+		.section-list article .article-title{
+			color: #1C5F88;
+			font-size: 0.88rem;
+			margin-top: 0px;
+			text-transform: uppercase;
+		}
 
 		.section-list article .article-header{
 			/*TODO: remove styles*/
-			display:flex;
 			flex-flow: column;
 			align-items:center;
 			text-align:center;
-			height: 30%;
-			border-bottom: 2px solid black;
+			height: 21%;
+			/*border-bottom: 2px solid black;*/
 			/*margin-top:-20px;*/
 		}
 
 			.section-list article .article-header .article-title{
 				width:100%;
-				font-size:1.0rem;
+				font-size:0.88rem;
+				text-align:left;
 			}
 
 		.section-list article .article-body{
