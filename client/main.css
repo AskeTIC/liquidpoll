@@ -118,8 +118,8 @@ web-main {
 	.section-list article{
 		background:white;
 		/*border: 2px solid black;*/
-		height: 27vh;
-		margin-top:10px;
+		height: 128px;
+		margin-top:4.9vw;
 		padding:8px 10px;
 		color: #1c5f88;
 		font-weight:bold;
@@ -219,10 +219,51 @@ web-footer {
 
 @media only screen and (max-width: 480px) and (orientation: landscape){
 
+
+		.navigation nav ul li {
+	    font-size: 0.7rem;
+		}
+
+		#header .title {
+	    font-size: 1.1rem;
+		}
+
+		.section-list article {
+			margin-top:4.9vw;
+		}
+
+		.section-list article .article-title {
+	    font-size: 0.88rem;
+		}
+
+		.section-list article .article-header .article-title {
+	    font-size: 0.88rem;
+		}
+
 }
 
-/* RESOLUCION MAS DE 480px */
-@media only screen and (min-width: 481px) {
+/* RESOLUCION MAS DE 480px portrait*/
+@media only screen and (min-width: 481px) and (orientation: portrait){
+
+	.navigation nav ul li {
+    font-size: 0.9rem;
+	}
+
+	#header .title {
+    font-size: 1.3rem;
+	}
+
+	.section-list article {
+		margintop:4.7vw;
+	}
+
+	.section-list article .article-title {
+    font-size: 1rem;
+	}
+
+	.section-list article .article-header .article-title {
+    font-size: 1rem;
+	}
 
 }
 
