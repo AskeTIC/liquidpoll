@@ -1,1 +1,235 @@
-/* CSS declarations go here */
+/* RESOLUCION GENERAL (MOBILE FIRST)*/
+/*ESTILOS GENERALES*/
+* {
+	color:black;
+	font-size:16px;
+	font-family:Sans-serif;
+}
+
+html, body{
+	margin:0;
+	padding:0;
+}
+
+body {
+}
+
+.container {
+	display: block;
+	min-height:100%;
+	margin: 0 auto;
+	height:100%;
+	margin-top:-16px;
+	background:#748793;
+	/*border-bottom: 5px solid gray;*/
+}
+
+/*Colores corporativos*/
+
+
+/*HEADER PAGE*/
+web-header {
+	display:block;
+	/*min-height: 20vh;*/
+	background:#006934;
+	/*border-bottom: 0.2px solid red;*/
+}
+
+#header{
+	display:flex;
+	width:100%;
+}
+
+	#header .logo{
+		padding:13px 0px 11px 0px;
+		text-align:center;
+		display:none;
+	}
+
+	#header .title{
+			/*TODO: aling, margin, color, etc...*/
+		}
+
+	.navigation{
+		display:inline-block;
+		font-size:1rem;
+		width:100%;
+	}
+
+		.navigation nav{
+			/*TODO: ¿?*/
+		}
+
+			.navigation nav ul{
+				list-style:none;
+				display:flex;
+				flex-flow:row reverse;
+				justify-content:flex-end;
+			  margin-bottom: 6px;
+			  margin-top: 30px;
+				text-transform:uppercase;
+			}
+
+				.navigation nav ul li{
+					color:white;
+					font-size:0.7rem;
+					text-decoration:underline;
+					display:inline;
+					margin-right:10px;
+				}
+
+/*MAIN PAGE*/
+web-main {
+	display:block;
+	min-height: 75vh;
+	background:#748793;
+	/*border-bottom: 0.2px solid red;*/
+}
+
+#main > div {
+	/*No parece funcionar sin absolute
+	asi que lo ponemos y le damos la misma altura que al padre*/
+  /*HEight necesita siempre ser absolute a no ser que sea un elemento flexbox ?? */
+	display:block;
+	height: 68%;
+	/*border-bottom: 4px solid green;*/
+	margin-bottom:15px;
+}
+
+/*List page section*/
+.section-list {
+	/*Flex en este padre influye en su comportamiento por defecto y no sucede como en el div padre*/
+
+	/*por ejemplo parece no funcionar el margin 0 auto*/
+	display:flex;
+	flex-flow: column;
+	width: 90%;
+	margin:0 auto;
+	height: 100%;
+	min-height: 65%;
+}
+
+	.section-list article{
+		background:white;
+		/*border: 2px solid black;*/
+		height: 27vh;
+		margin-top:10px;
+		padding:8px 10px;
+		color: #1c5f88;
+		font-weight:bold;
+		text-decoration:underline;
+		font-size: 3vw;
+	}
+
+		.section-list article .article-header{
+			/*TODO: remove styles*/
+			display:flex;
+			flex-flow: column;
+			align-items:center;
+			text-align:center;
+			height: 30%;
+			border-bottom: 2px solid black;
+			/*margin-top:-20px;*/
+		}
+
+			.section-list article .article-header .article-title{
+				width:100%;
+				font-size:1.0rem;
+			}
+
+		.section-list article .article-body{
+			width:100%;
+			font-size:0.7rem;
+			font-weight: bold;
+			margin-top:-5px;
+		}
+
+		.section-list article .article-footer{
+
+		}
+
+/*Single page section*/
+.section-single {
+	/*TODO: header, etc...*/
+}
+
+	.section-single .section-title{
+		margin:10px auto;
+		text-transform: uppercase;
+		color:#1C5F88;
+		text-align:center;
+		text-decoration: underline;
+		font-size:0.8rem;
+	}
+
+	.section-single canvas{
+		background:white;
+	  border: 0px solid rgb(255, 255, 255);
+	  width: 100%;
+	}
+
+/*ASIDE PAGE*/
+web-sidebar {
+	border-top: 2px solid black;
+}
+
+/*FOOTER PAGE*/
+web-footer {
+	display:block;
+	clear:both;
+	background-color: #000;
+	/*border-bottom: 0.2px solid red;*/
+	min-height:5vh;
+}
+
+#footer {
+	/*background-color: purple;*/
+	color:white;
+	position:absolute;
+	width:100%;
+	background:black;
+}
+
+.footer-page{
+}
+
+
+/*FORMS*/
+
+
+@media only screen and (orientation: landscape){
+
+}
+
+@media only screen and (max-width: 480px) and (orientation: portrait){
+
+}
+
+@media only screen and (max-width: 480px) and (orientation: landscape){
+
+}
+
+/* RESOLUCION MAS DE 480px */
+@media only screen and (min-width: 481px) {
+
+}
+
+/* RESOLUCION MAS DE 768px */
+@media only screen and (min-width: 769px){
+
+}
+
+/* RESOLUCION MAS DE 800px */
+@media only screen and (min-width: 801px){
+
+}
+
+/* RESOLUCION MAS DE 1024px */
+@media only screen and (min-width: 1025px){
+
+}
+
+/* RESOLUCION MAS DE 1280px */
+@media only screen and (min-width: 1281px) {
+
+}
