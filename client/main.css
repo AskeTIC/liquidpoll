@@ -192,6 +192,7 @@ web-footer {
 	background-color: #000;
 	/*border-bottom: 0.2px solid red;*/
 	min-height:5vh;
+	display:none;
 }
 
 #footer {
@@ -259,6 +260,7 @@ web-footer {
 
 	.section-list article {
 		margin-top: 25px;
+		height: 220px;
 	}
 
 	.section-list article .article-title {
@@ -291,6 +293,7 @@ web-footer {
 
 	.section-list article {
 		margin-top: 25px;
+		height: 220px;
 	}
 
 	.section-list article .article-title {
@@ -307,39 +310,81 @@ web-footer {
 
 }
 
-/* RESOLUCION MAS DE 768px */
-@media only screen and (min-width: 769px) {
+/* RESOLUCION MAS DE 768px portrait*/
+@media only screen and (min-width: 769px) and (orientation: portrait){
 
-	.navigation nav ul li {
-    font-size: 0.9rem;
-	}
 
-	#header .title {
-    font-size: 1.3rem;
-	}
+		.navigation nav ul li {
+	    font-size: 1rem;
+		}
 
-	.section-list article {
-		margintop:4.7vw;
-	}
+		#header .title {
+	    font-size: 1.7rem;
+			top: -14px;
+		}
 
-	.section-list article .article-title {
-    font-size: 1rem;
-	}
+		.section-list{
+			width: 94%;
+		}
 
-	.section-list article .article-header .article-title {
-    font-size: 1rem;
-	}
+		.section-list article {
+			margin-top: 25px;
+			height: 220px;
+		}
+
+		.section-list article .article-title {
+	    font-size: 1.2rem;
+		}
+
+		.section-list article .article-header .article-title {
+	    font-size: 1.2rem;
+		}
+
+		.section-single .section-title {
+	    font-size: 1.2rem;
+		}
 
 }
 
-/* RESOLUCION MAS DE 800px */
-@media only screen and (min-width: 801px){
+/* RESOLUCION MAS DE 768px portrait*/
+@media only screen and (min-width: 769px) and (orientation: landscape){
+
+
+		.navigation nav ul li {
+	    font-size: 1rem;
+		}
+
+		#header .title {
+	    font-size: 1.7rem;
+			top: -14px;
+		}
+
+		.section-list{
+			width: 94%;
+		}
+
+		.section-list article {
+			margin-top: 25px;
+			height: 240px;
+		}
+
+		.section-list article .article-title {
+	    font-size: 1.2rem;
+		}
+
+		.section-list article .article-header .article-title {
+	    font-size: 1.2rem;
+		}
+
+		.section-single .section-title {
+	    font-size: 1.2rem;
+		}
 
 }
 
 /* RESOLUCION MAS DE 1024px */
 @media only screen and (min-width: 1025px){
-
+	
 }
 
 /* RESOLUCION MAS DE 1280px */
