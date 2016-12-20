@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import {Settings} from '../imports/api/settings';
 import {Parliaments} from '../imports/api/parliaments';
 import {Agoras} from '../imports/api/agoras';
 import {Surveys} from '../imports/api/surveys';
@@ -6,10 +7,35 @@ import {Surveys} from '../imports/api/surveys';
 //console.log(Agoras);
 Meteor.startup(() => {
   // code to run on server at startup
-  if (Parliaments.find().count() === 0) {
+  if(Settings.find().count() === 0){
+    const settings = [{
+      'node' : 0,
+      'settings' : {
+        'area' : {
+          'barrio'    : 1, //conjunto de calles y/o parcelas de terreno (distritos).
+          'municipio' : 2, //conjunto de barrios (ciudad, pueblo, villa, etc...).
+          'provincia' : 3, //conjunto de municipios ().
+          'state'     : 4, //conjunto de provincias (comunidades autónomicas, regiones culturales, etc..).
+          'country'   : 5, //conjunto de estados (algunos paises es conjunto de privincias, no tienen estados).
+          'federation': 6  //conjunto de paises y/o estados y/o provincias (Rusia tiene de los 3 tipos).
+        },
+        'types' : {
+          'representative' : 1, //representative (la mierda actual)
+          'direct'         : 2, //representative but direct (decisiones importantes por referendums)
+          'liquid'         : 3, //liquid (todos proponemos y todos decidimos)
+          'delegated'      : 4  //liquid but delegated (algunas personas delegan en otras ciertas decisiones)
+        }
+      }
+    }];
+    settings.forEach((parli) => {
+      Settings.insert(parli);
+    });
+  }
+  if(Parliaments.find().count() === 0) {
     const parliaments = [{
-        'name': 'argentina',
-        'description': 'Parlamento de Argentina.',
+        'name': 'Argentina',
+        'slug': 'argentina',
+        'description': 'República de Argentina.',
         'entities' : [
           {name: 'Frente para la victoria',
            points: 250,
@@ -35,11 +61,17 @@ Meteor.startup(() => {
            points: 130,
            percent:null,
            color:"orange"}
-        ]
+        ],
+        'settings' : {
+          'nodes' : [0],
+          'area' : 5,
+          'type'  : 1
+        }
       },
       {
-        'name': 'españa',
-        'description': 'Parlamento de España',
+        'name': 'España',
+        'slug': 'españa',
+        'description': 'Reino de España',
         'entities' : [
           {name: 'PP',
            points: 250,
@@ -65,11 +97,17 @@ Meteor.startup(() => {
            points: 130,
            percent:null,
            color:"orange"}
-        ]
+        ],
+        'settings' : {
+          'nodes' : [0],
+          'area' : 5,
+          'type'  : 1
+        }
       },
       {
-        'name': 'euskadi',
-        'description': 'Parlamento vasco.',
+        'name': 'Euskadi',
+        'slug': 'euskadi',
+        'description': 'Comunidad Autónoma del País Vasco',
         'entities':  [
           {name: 'PNV',
            points: 250,
@@ -95,16 +133,22 @@ Meteor.startup(() => {
            points: 130,
            percent:null,
            color:"orange"}
-        ]
+        ],
+        'settings' : {
+          'nodes' : [0],
+          'area' : 4,
+          'type' : 1
+        }
       }
     ];
     parliaments.forEach((parli) => {
       Parliaments.insert(parli)
     });
   }
-  if (Agoras.find().count() === 0) {
+  if(Agoras.find().count() === 0) {
     const agoras = [{
-        'name': 'argentina',
+        'name': 'Argentina',
+        'slug': 'argentina',
         'description': 'Ágora argentina.',
         'entities' : [
           {name: 'Cambiemos',
@@ -147,10 +191,16 @@ Meteor.startup(() => {
            points: 450,
            percent:null,
            color:"lightblue"}
-        ]
+        ],
+        'settings' : {
+          'nodes' : [0],
+          'level' : 5,
+          'type'  : 3
+        }
       },
       {
-        'name': 'españa',
+        'name': 'España',
+        'slug': 'españa',
         'description': 'Ágora española',
         'entities' : [
           {name: 'Cambiemos durante 200.000 años',
@@ -193,10 +243,16 @@ Meteor.startup(() => {
            points: 450,
            percent:null,
            color:"lightblue"}
-        ]
+        ],
+        'settings' : {
+          'nodes' : [0],
+          'area'  : 5,
+          'type'  : 3
+        }
       },
       {
-        'name': 'euskadi',
+        'name': 'Euskadi',
+        'slug': 'euskadi',
         'description': 'Ágora vasca.',
         'entities':  [
           {name: 'Beltzako gizonak III',
@@ -239,16 +295,24 @@ Meteor.startup(() => {
            points: 450,
            percent:null,
            color:"pink"}
-        ]
+        ],
+        'settings' : {
+          'nodes' : [0],
+          'area'  : 4,
+          'type'  : 3
+        }
       }
     ];
     agoras.forEach((agora) => {
       Agoras.insert(agora)
     });
   }
-  if (Surveys.find().count() === 0) {
+  if(Surveys.find().count() === 0) {
     const surveys = [{
-        'context': {type: 'agora', name: 'españa'},
+        'scope': {
+          types: [1],
+          slug: ['españa']
+        },
         'question': '¿Estas de acuerdo con la abstención del PSOE ?',
         'answers' : [
           {name: 'SI',
@@ -266,7 +330,10 @@ Meteor.startup(() => {
         ]
       },
       {
-        'context': {type: 'agora', name: 'euskadi'},
+        'scope': {
+          types: [3],
+          slug: ['euskadi']
+        },
         'question': '¿Estarías a favor de la independencia de Euskadi?',
         'answers' : [
           {name: 'Si, dependiendo las circustáncias',
@@ -288,7 +355,10 @@ Meteor.startup(() => {
         ]
       },
       {
-        'context': {type: 'parliament', name: 'euskadi'},
+        'scope': {
+          types: [1],
+          slug: ['euskadi']
+        },
         'question': '¿Estas a favor del derecho de autodeterminación de Euskadi?',
         'answers' : [
           {name: 'Si, y para todas las regiones de España',
@@ -310,7 +380,10 @@ Meteor.startup(() => {
         ]
       },
       {
-        'context': {type: 'parliament', name: 'euskadi'},
+        'scope': {
+          types: [1],
+          slug: ['euskadi']
+        },
         'question': '¿Apoyas la decisión de no investigar en caso Bidegi?',
         'answers' : [
           {name: 'Si',
@@ -328,8 +401,8 @@ Meteor.startup(() => {
         ]
       }
     ];
-    surveys.forEach((agora) => {
-      Surveys.insert(agora)
+    surveys.forEach((survey) => {
+      Surveys.insert(survey)
     });
   }
 });

@@ -17,7 +17,7 @@ class ViewParliament {
 
     this.helpers({
       parli() {
-        return Parliaments.findOne({name: $stateParams.parliamentName });
+        return Parliaments.findOne({slug: $stateParams.parliSlug });
       }
     });
   }
@@ -36,7 +36,7 @@ function config($stateProvider) {
 	'ngInject';
   $stateProvider
     .state('parliament', {
-      url: '/parlamento/:parliamentName',
+      url: '/parlamentos/:parliSlug',
       template: '<view-parliament></view-parliament>'
     });
 }
