@@ -24,7 +24,6 @@ class ViewParliamentList {
 export default angular.module(name, [angularMeteor, uiRouter])
 	.component(name, {
 		templateUrl: template,
-		controllerAs: name,
 		controller: ViewParliamentList
 	})
 	.config(config);

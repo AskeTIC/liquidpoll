@@ -1,12 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
-import uiRouter from 'angular-ui-router';
-/*
-import { name as viewParliamentList } from '../viewParliamentList/viewParliamentList';
-import { name as viewAgoraList } from '../viewAgoraList/viewAgoraList';
-import { name as viewParliament } from '../viewParliament/viewParliament';
-import { name as viewAgora } from '../viewAgora/viewAgora';
-*/
+
+import { name as chartsPie } from '../chartsPie/chartsPie';
+
 import template from './webSidebar.html';
 
 const name = 'webSidebar';
@@ -14,6 +10,13 @@ const name = 'webSidebar';
 class WebSidebar {
   constructor($stateParams, $scope, $reactive) {
     'ngInject';
+    $reactive(this).attach($scope);
+
+    this.helpers({
+      idCanvas() {
+        return "pie";
+      }
+    });
 
   }
 
@@ -22,14 +25,9 @@ class WebSidebar {
 // create a module with a componente
 export default angular.module( name, [
   angularMeteor,
-  uiRouter
-  //viewAgora,
-  //viewParliament,
-  //viewAgoraList,
-  //viewParliamentList
+  chartsPie
 ])
   .component(name, {
     templateUrl: template,
     controller: WebSidebar,
-    controllerAs: name
   });

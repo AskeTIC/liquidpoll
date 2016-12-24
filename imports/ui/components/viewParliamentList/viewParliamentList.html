@@ -1,5 +1,5 @@
 <section class="section-list" >
-  <article class="" ui-sref="parliament({parliSlug: parli.slug})" ng-repeat="parli in viewParliamentList.parlis">
+  <article class="" ui-sref="parliament({parliSlug: parli.slug})" ng-repeat="parli in $ctrl.parlis">
     <h1 class="article-title">Parlamento {{parli.name | uppercase}}</h1>
   </article>
 </section>

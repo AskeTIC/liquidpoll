@@ -3,7 +3,7 @@ import angularMeteor from 'angular-meteor';
 
 import template from './webFooter.html';
 
-const name = 'webFooter'; // Con esta constante se crea el elemento de HTML: <web-footer></web-footer> 
+const name = 'webFooter'; // Con esta constante se crea el elemento de HTML: <web-footer></web-footer>
 
 class WebFooter {}
 
@@ -13,7 +13,6 @@ export default angular.module( name, [
   angularMeteor ])
     .component(name, {
       templateUrl: template,
-      controller: WebFooter,
-      controllerAs: name
+      controller: WebFooter
     }
 );
