@@ -18,22 +18,30 @@ class ViewAgora {
     //recoger las entidades del ágora
     //TODO: recoger directamente el array de la BBDD
     //var agora = Agoras.findOne({name: $stateParams.agoraName }, {name: 0, description: 0, entities:1});
-    var agora = Agoras.findOne({slug: $stateParams.agoraSlug });
-    console.log(typeof agora);
+
+    var options = {
+      width: 50,
+      div: 1.5,
+      ctx: '2d'
+    }
+
 
     this.helpers({
-      agora() {
-        return agora;
-      }
+        options() {
+            return options;
+        },
+        agora() {
+            return Agoras.findOne({slug: $stateParams.agoraSlug });;
+        }
     });
   }
 }
 
 // create a module
 export default angular.module(name, [
-  angularMeteor,
-  chartsBars
-  ])
+        angularMeteor,
+        chartsBars
+    ])
 	.component(name, {
 		templateUrl: template,
 		controllerAs: name,
@@ -43,9 +51,9 @@ export default angular.module(name, [
 
 function config($stateProvider) {
 	'ngInject';
-  $stateProvider
+    $stateProvider
     .state('agora', {
-      url: '/agoras/:agoraSlug',
-      template: '<view-agora></view-agora>'
+        url: '/agoras/:agoraSlug',
+        template: '<view-agora></view-agora>'
     });
 }
