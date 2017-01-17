@@ -3,6 +3,10 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 import { Agoras } from '../../../api/agoras';
 
+//Componentes incluidos (dependencias)
+import { name as chartsBars } from '../chartsBars/chartsBars';
+//import { name as chartsPie } from '../chartsPie/chartsPie';
+
 import template from './viewAgoraList.html';
 const name = 'viewAgoraList';
 
@@ -12,16 +16,28 @@ class ViewAgoraList {
     $reactive(this).attach($scope);
     //console.log(Parliaments);
 
+    var options = {
+      width: 40,
+      div: 1.2,
+      ctx: '2d'
+    }
+
     this.helpers({
-      agoras() {
-        return Agoras.find({});
-      }
+        options() {
+            return options;
+        },
+        agoras() {
+            return Agoras.find({});
+        }
     });
   }
 }
 
 // create a module
-export default angular.module(name, [angularMeteor, uiRouter])
+export default angular.module(name, [
+  angularMeteor,
+  uiRouter,
+  chartsBars])
 	.component(name, {
 		templateUrl: template,
 		controllerAs: name,
