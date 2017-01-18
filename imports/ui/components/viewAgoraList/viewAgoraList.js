@@ -14,12 +14,17 @@ class ViewAgoraList {
   constructor($stateParams, $scope, $reactive) {
     'ngInject';
     $reactive(this).attach($scope);
-    //console.log(Parliaments);
 
     var options = {
-      width: 40,
-      div: 1.2,
-      ctx: '2d'
+        bar : {
+            width: 40,
+            div: 1.2,
+        },
+        canvas : {
+            width: 0,
+            height: 200,
+            ctx: '2d'
+        }
     }
 
     this.helpers({

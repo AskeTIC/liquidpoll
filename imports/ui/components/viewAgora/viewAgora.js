@@ -20,11 +20,16 @@ class ViewAgora {
     //var agora = Agoras.findOne({name: $stateParams.agoraName }, {name: 0, description: 0, entities:1});
 
     var options = {
-      width: 50,
-      div: 1.5,
-      ctx: '2d'
+        bar : {
+            width: 50,
+            div: 1.5,
+        },
+        canvas : {
+            width: 1,
+            height: 200,
+            ctx: '2d'
+        }
     }
-
 
     this.helpers({
         options() {
