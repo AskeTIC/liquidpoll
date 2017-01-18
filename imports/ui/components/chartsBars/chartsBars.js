@@ -13,7 +13,7 @@ class ChartsBars{
     'ngInject';
     $reactive(this).attach($scope);
     console.log('ChartsBars Controller !!!!!!!!!!!!!');
-
+    
     //ordenar el array de menor a mayor e invertir
     //TODO: mejorar arraySort() para invertir en los 2 ordenes y por X atributo.
     utils.arraySort(this.entities);
