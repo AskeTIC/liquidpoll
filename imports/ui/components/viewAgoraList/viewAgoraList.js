@@ -17,11 +17,11 @@ class ViewAgoraList {
 
     var options = {
         bar : {
-            width: 40,
-            div: 1.2,
+            width: 30,
+            div: 2,
         },
         canvas : {
-            width: 0,
+            width: 500,
             height: 200,
             ctx: '2d'
         }
@@ -31,7 +31,9 @@ class ViewAgoraList {
         options() {
             return options;
         },
+        //TODO: Si cambia un valor debe de cambiar el tiempo real.
         agoras() {
+            //TODO: Extraer solo las que pueda ver el user, y ordenar de level area más grande a menos.
             return Agoras.find({});
         }
     });

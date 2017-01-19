@@ -1,13 +1,20 @@
 <section class="section-list">
-    <article class="" ui-sref="agora({agoraSlug: agora.slug})" ng-repeat="agora in viewAgoraList.agoras">
+    <article class="" ng-repeat="agora in viewAgoraList.agoras">
         <header class="article-header">
-            <h1 class="article-title">Ágora {{agora.name | uppercase}}</h1>
+            <h1 class="article-title" ui-sref="agora({agoraSlug: agora.slug})">ÁGORA {{agora.name | uppercase}}</h1>
+            <h2 class="article-subtitle">ÁGORAS INTERNAS</h2>
+            <button class="button button-area"
+                ng-repeat="subagora in agora.subagoras"
+                ui-sref="agora({agoraSlug: subagora.slug})">{{subagora.name}}</button>
         </header>
         <body class="article-body">
             <!--IMPORTANT: Dentro de un ng-repeat para evaluar una expresion que se va a pasar como string
             que no sea del bucle necesitamos {{}}, si queremos pasar un objeto no hacen falta. -->
-            <charts-bars slug="{{agora.slug}}" entities="agora.entities" options="viewAgoraList.options" ></charts-bars>
+            <charts-bars slug="{{agora.slug}}" entities="agora.entities" options="viewAgoraList.options"></charts-bars>
         </body>
-        <footer class="article-footer"></footer>
+        <footer class="article-footer">
+            <button class="button button-social" >INVITAR</button>
+            <button class="button button-social" >COMPARTIR</button>
+        </footer>
     </article>
 </section>
