@@ -12,18 +12,17 @@ Meteor.startup(() => {
       'node' : 0,
       'settings' : {
         'area' : {
-          'barrio'    : 1, //conjunto de calles y/o parcelas de terreno (distritos).
-          'municipio' : 2, //conjunto de barrios (ciudad, pueblo, villa, etc...).
-          'provincia' : 3, //conjunto de municipios ().
-          'state'     : 4, //conjunto de provincias (comunidades autónomicas, regiones culturales, etc..).
-          'country'   : 5, //conjunto de estados (algunos paises es conjunto de privincias, no tienen estados).
-          'federation': 6  //conjunto de paises y/o estados y/o provincias (Rusia tiene de los 3 tipos).
+            'barrio'    : 1, //conjunto de calles y/o parcelas de terreno (distritos).
+            'municipio' : 2, //conjunto de barrios (ciudad, pueblo, villa, etc...).
+            'provincia' : 3, //conjunto de municipios (condado en USA por ejemplo).
+            'country'   : 4, //conjunto de provincias (State en USA, comunidades autónomás en España, republica en Rusia, por ejemplo).
+            'federation': 5  //conjunto de estados o paises (Rusia, USA, España, etc...).
         },
         'types' : {
-          'representative' : 1, //representative (la mierda actual)
-          'direct'         : 2, //representative but direct (decisiones importantes por referendums)
-          'liquid'         : 3, //liquid (todos proponemos y todos decidimos)
-          'delegated'      : 4  //liquid but delegated (algunas personas delegan en otras ciertas decisiones)
+            'representative' : 1, //representative (la mierda actual)
+            'direct'         : 2, //representative but direct (decisiones importantes por referendums)
+            'liquid'         : 3, //liquid (todos proponemos y todos decidimos)
+            'delegated'      : 4  //liquid but delegated (algunas personas delegan en otras ciertas decisiones)
         }
       }
     }];
@@ -146,7 +145,8 @@ Meteor.startup(() => {
     });
   }
   if(Agoras.find().count() === 0) {
-    const agoras = [{
+    const agoras = [
+        {
         'name': 'Argentina',
         'slug': 'argentina',
         'description': 'Ágora argentina.',
@@ -192,9 +192,19 @@ Meteor.startup(() => {
            percent:null,
            color:"lightblue"}
         ],
+        'subagoras': [
+            {
+                'name': 'Cordoba',
+                'slug': 'cordoba'
+            },
+            {
+                'name': 'Buenos Aires',
+                'slug': 'buenos-aires'
+            }
+        ],
         'settings' : {
-          'nodes' : [0],
-          'level' : 5,
+          'nodes' : [1],
+          'area'  : 4,
           'type'  : 3
         }
       },
@@ -243,6 +253,20 @@ Meteor.startup(() => {
            points: 450,
            percent:null,
            color:"lightblue"}
+        ],
+        'subagoras': [
+            {
+                'name': 'Madrid',
+                'slug': 'madrid'
+            },
+            {
+                'name': 'Castilla la Mancha',
+                'slug': 'castilla-la-mancha'
+            },
+            {
+                'name': 'Euskadi',
+                'slug': 'euskadi'
+            }
         ],
         'settings' : {
           'nodes' : [0],
@@ -296,6 +320,20 @@ Meteor.startup(() => {
            percent:null,
            color:"pink"}
         ],
+        'subagoras': [
+            {
+                'name': 'Araba',
+                'slug': 'araba'
+            },
+            {
+                'name': 'Bizkaia',
+                'slug': 'bizkaia'
+            },
+            {
+                'name': 'Gipuzkoa',
+                'slug': 'gipuzkoa'
+            }
+        ],
         'settings' : {
           'nodes' : [0],
           'area'  : 4,
@@ -309,7 +347,7 @@ Meteor.startup(() => {
   }
   if(Surveys.find().count() === 0) {
     const surveys = [{
-        'scope': {
+        'areas': {
           types: [1],
           slug: ['españa']
         },
