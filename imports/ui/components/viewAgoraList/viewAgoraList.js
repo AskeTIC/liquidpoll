@@ -17,8 +17,8 @@ class ViewAgoraList {
 
     var options = {
         bar : {
-            width: 30,
-            div: 2,
+            width: 22,
+            div: 1,
         },
         canvas : {
             width: 1,

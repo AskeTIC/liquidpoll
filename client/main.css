@@ -38,6 +38,7 @@ web-header {
 #header{
 	display:flex;
 	width:100%;
+	height: 70px;
 }
 
 	#header .logo{
@@ -164,7 +165,7 @@ web-main {
 			height: 90%;
 			font-size:0.7rem;
 			font-weight: bold;
-			margin-top: 4px;
+			margin-top: 6px;
 		}
 
 		.section-list article .article-footer{
@@ -173,6 +174,7 @@ web-main {
 		}
 
 			.section-list article .article-footer .button-social {
+				font-size: 12px;
 				color: white;
 				background-color: gray;
 				border: none;
@@ -197,8 +199,8 @@ web-main {
 
 	.section-single canvas{
 		background:white;
-	  border: 0px solid rgb(255, 255, 255);
-	  width: 100%;
+	  	border: 0px solid rgb(255, 255, 255);
+	  	width: 100%;
 	}
 
 /*ASIDE PAGE*/
@@ -447,6 +449,6 @@ web-footer {
 
 /**ESTILOS COMPONENTES*/
 .chart-bars{
-	border-left: 2px solid black;
-	border-bottom: 2px solid black;
+	border-left: 3px solid black;
+	border-bottom: 3px solid black;
 }
