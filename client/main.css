@@ -73,7 +73,6 @@ web-header {
 				justify-content:flex-end;
 			    margin-bottom: 6px;
 			    margin-top: 30px;
-				text-transform:uppercase;
 			}
 
 				.navigation nav ul li{
@@ -119,13 +118,10 @@ web-main {
 		display: flex;
 		flex-flow: row wrap;
 		/*background: white;*/
-		border: 2px solid black;
+		border: 3px solid #006934;
 		height: 128px;
 		margin-top:4.9vw;
 		padding:8px 10px;
-		font-weight:bold;
-		text-decoration:underline;
-		font-size: 3vw;
 	}
 
 		.section-list article .article-header{
@@ -134,36 +130,56 @@ web-main {
 		}
 
 			.section-list article .article-header .article-title{
-				width:100%;
-				font-size:0.88rem;
+				font-size:1.78rem;
 				text-align:left;
-				color: #1C5F88;
-				font-size: 0.88rem;
 				margin-top: 0px;
+			}
+
+			.section-list article .article-header .article-title span {
+				color: #006934;
+				border-bottom: 2px solid #006934;
 			}
 
 			.section-list article .article-header .article-subtitle{
-				width:100%;
 				font-size:0.88rem;
 				text-align:left;
-				color: red;
-				font-size: 0.88rem;
 				margin-top: 0px;
 			}
 
+			.section-list article .article-header .article-subtitle span {
+				color: #1C5F88;
+				border-bottom: 2px solid #1C5F88;
+			}
+
+			.section-list article .article-header .button-area {
+				color: white;
+				background-color: #1C5F88;
+				border: none;
+				padding: 2px;
+				margin-left: 5px;
+				cursor: pointer;
+			}
 		.section-list article .article-main{
 			width:70%;
 			height: 90%;
 			font-size:0.7rem;
 			font-weight: bold;
-			margin-top:-5px;
+			margin-top: 4px;
 		}
 
 		.section-list article .article-footer{
 			width: 100%;
 			height: 10%;
-			border-top: 1px solid orange;
 		}
+
+			.section-list article .article-footer .button-social {
+				color: white;
+				background-color: gray;
+				border: none;
+				padding: 2px;
+				margin-left: 5px;
+				cursor: pointer;
+			}
 
 /*Single page section*/
 .section-single {
@@ -226,37 +242,33 @@ web-footer {
 @media only screen and (max-width: 480px) and (orientation: landscape){
 
 
-		.navigation nav ul li {
-	    font-size: 0.7rem;
-		}
+	#header .title {
+    	font-size: 1.1rem;
+	}
 
-		#header .title {
-	    font-size: 1.1rem;
-		}
+	#header .navigation nav ul li {
+    	font-size: 0.7rem;
+	}
 
-		.section-list article {
-			margin-top:4.9vw;
-		}
+	.section-list article {
+		margin-top:4.9vw;
+	}
 
-		.section-list article .article-title {
-	    font-size: 0.88rem;
-		}
-
-		.section-list article .article-header .article-title {
-	    font-size: 0.88rem;
-		}
+	.section-list article .article-header .article-title {
+    	font-size: 0.88rem;
+	}
 
 }
 
 /* RESOLUCION MAS DE 480px portrait*/
 @media only screen and (min-width: 481px) and (orientation: portrait){
 
-	.navigation nav ul li {
-    font-size: 0.9rem;
+	#header .title {
+    	font-size: 1.3rem;
 	}
 
-	#header .title {
-    font-size: 1.3rem;
+	#header .navigation nav ul li {
+    	font-size: 0.9rem;
 	}
 
 	.section-list{
@@ -268,28 +280,25 @@ web-footer {
 		height: 220px;
 	}
 
-	.section-list article .article-title {
-    font-size: 1rem;
-	}
-
 	.section-list article .article-header .article-title {
-    font-size: 1rem;
+    	font-size: 1rem;
 	}
 
 	.section-single .section-title {
-    font-size: 1rem;
+    	font-size: 1rem;
 	}
 
 }
 
 @media only screen and (min-width: 481px) and (orientation: landscape){
 
-	.navigation nav ul li {
-    font-size: 0.9rem;
-	}
 
 	#header .title {
-    font-size: 1.3rem;
+    	font-size: 1.3rem;
+	}
+
+	#header .navigation nav ul li {
+    	font-size: 0.9rem;
 	}
 
 	.section-list{
@@ -301,16 +310,12 @@ web-footer {
 		height: 220px;
 	}
 
-	.section-list article .article-title {
-    font-size: 1rem;
-	}
-
 	.section-list article .article-header .article-title {
-    font-size: 1rem;
+    	font-size: 1rem;
 	}
 
 	.section-single .section-title {
-    font-size: 1rem;
+    	font-size: 1rem;
 	}
 
 }
@@ -318,83 +323,76 @@ web-footer {
 /* RESOLUCION MAS DE 768px portrait*/
 @media only screen and (min-width: 769px) and (orientation: portrait){
 
-		.navigation nav ul li {
-	    font-size: 1rem;
-		}
+	#header .title {
+    	font-size: 1.7rem;
+		top: -14px;
+	}
 
-		#header .title {
-	    font-size: 1.7rem;
-			top: -14px;
-		}
+	#header .navigation nav ul li {
+		font-size: 1rem;
+	}
 
-		.section-list{
-			width: 94%;
-		}
+	.section-list{
+		width: 94%;
+	}
 
-		.section-list article {
-			margin-top: 25px;
-			height: 240px;
-		}
+	.section-list article {
+		margin-top: 25px;
+		height: 240px;
+	}
 
-		.section-list article .article-title {
-	    font-size: 1.2rem;
-		}
+	.section-list article .article-header .article-title {
+    	font-size: 1.2rem;
+	}
 
-		.section-list article .article-header .article-title {
-	    font-size: 1.2rem;
-		}
-
-		.section-single .section-title {
-	    font-size: 1.2rem;
-		}
+	.section-single .section-title {
+    	font-size: 1.2rem;
+	}
 
 }
 
 /* RESOLUCION MAS DE 768px portrait*/
 @media only screen and (min-width: 769px) and (orientation: landscape){
 
-		.navigation nav ul li {
-	    font-size: 1rem;
-		}
 
-		#header .title {
-	    font-size: 1.7rem;
-			top: -14px;
-		}
+	#header .title {
+    	font-size: 1.7rem;
+		top: -14px;
+	}
 
-		.section-list{
-			width: 94%;
-		}
+	#header .navigation nav ul li {
+    	font-size: 1rem;
+	}
 
-		.section-list article {
-			margin-top: 25px;
-			height: 240px;
-		}
+	.section-list{
+		width: 94%;
+	}
 
-		.section-list article .article-title {
-	    font-size: 1.2rem;
-		}
+	.section-list article {
+		margin-top: 25px;
+		height: 240px;
+	}
 
-		.section-list article .article-header .article-title {
-	    font-size: 1.2rem;
-		}
+	.section-list article .article-header .article-title {
+    	font-size: 1.2rem;
+	}
 
-		.section-single .section-title {
-	    font-size: 1.2rem;
-		}
+	.section-single .section-title {
+    	font-size: 1.2rem;
+	}
 
 }
 
 /* RESOLUCION MAS DE 1024px */
 @media only screen and (min-width: 1025px){
 
-	.navigation nav ul li {
-		font-size: 1.2rem;
-	}
-
 	#header .title {
 		font-size: 1.9rem;
 		top: -16px;
+	}
+
+	#header .navigation nav ul li {
+		font-size: 1.2rem;
 	}
 
 	/*MAIN PAGE*/
@@ -414,19 +412,21 @@ web-footer {
 		height: 240px;
 	}
 
-	.section-list article .article-title {
-		font-size: 1.3rem;
+	.section-list article .article-header .article-title span {
+		font-size: 1.6rem;
 	}
 
-	.section-list article .article-header .article-title {
-		font-size: 1.3rem;
+	.section-list article .article-header .article-subtitle span {
+		font-size: 1.2rem;
 	}
 
-	.section-single .section-title {
-		font-size: 1.3rem;
+	.section-single .section-title span{
+		font-size: 1.5rem;
 	}
 
-/*REVISAR*/
+
+
+	/*REVISAR*/
 	web-sidebar{
 		display: inline-block;
 		width: 30%;
@@ -447,6 +447,6 @@ web-footer {
 
 /**ESTILOS COMPONENTES*/
 .chart-bars{
-	border-left: 2px dashed black;
-	border-bottom: 2px dashed black;
+	border-left: 2px solid black;
+	border-bottom: 2px solid black;
 }
