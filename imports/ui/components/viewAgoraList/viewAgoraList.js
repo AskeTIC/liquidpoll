@@ -21,8 +21,8 @@ class ViewAgoraList {
             div: 2,
         },
         canvas : {
-            width: 500,
-            height: 200,
+            width: 1,
+            height: 1,
             ctx: '2d'
         }
     }

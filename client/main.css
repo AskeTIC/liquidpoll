@@ -20,7 +20,7 @@ body {
 	margin: 0 auto;
 	height:100%;
 	margin-top:-16px;
-	background:#748793;
+	/*background:#748793;*/
 	/*border-bottom: 5px solid gray;*/
 }
 
@@ -71,8 +71,8 @@ web-header {
 				display:flex;
 				flex-flow:row reverse;
 				justify-content:flex-end;
-			  margin-bottom: 6px;
-			  margin-top: 30px;
+			    margin-bottom: 6px;
+			    margin-top: 30px;
 				text-transform:uppercase;
 			}
 
@@ -88,7 +88,7 @@ web-header {
 web-main {
 	display:block;
 	min-height: 75vh;
-	background:#748793;
+	/*background:#748793;*/
 	/*border-bottom: 0.2px solid red;*/
 }
 
@@ -116,48 +116,53 @@ web-main {
 }
 
 	.section-list article{
-		background:white;
-		/*border: 2px solid black;*/
+		display: flex;
+		flex-flow: row wrap;
+		/*background: white;*/
+		border: 2px solid black;
 		height: 128px;
 		margin-top:4.9vw;
 		padding:8px 10px;
-		color: #1c5f88;
 		font-weight:bold;
 		text-decoration:underline;
 		font-size: 3vw;
 	}
-		.section-list article .article-title{
-			color: #1C5F88;
-			font-size: 0.88rem;
-			margin-top: 0px;
-			text-transform: uppercase;
-		}
 
 		.section-list article .article-header{
-			/*TODO: remove styles*/
-			flex-flow: column;
-			align-items:center;
-			text-align:center;
-			height: 21%;
-			/*border-bottom: 2px solid black;*/
-			/*margin-top:-20px;*/
+			width: 30%;
+			height: 90%;
 		}
 
 			.section-list article .article-header .article-title{
 				width:100%;
 				font-size:0.88rem;
 				text-align:left;
+				color: #1C5F88;
+				font-size: 0.88rem;
+				margin-top: 0px;
 			}
 
-		.section-list article .article-body{
-			width:100%;
+			.section-list article .article-header .article-subtitle{
+				width:100%;
+				font-size:0.88rem;
+				text-align:left;
+				color: red;
+				font-size: 0.88rem;
+				margin-top: 0px;
+			}
+
+		.section-list article .article-main{
+			width:70%;
+			height: 90%;
 			font-size:0.7rem;
 			font-weight: bold;
 			margin-top:-5px;
 		}
 
 		.section-list article .article-footer{
-
+			width: 100%;
+			height: 10%;
+			border-top: 1px solid orange;
 		}
 
 /*Single page section*/
@@ -436,4 +441,12 @@ web-footer {
 /* RESOLUCION MAS DE 1280px */
 @media only screen and (min-width: 1281px) {
 
+}
+
+
+
+/**ESTILOS COMPONENTES*/
+.chart-bars{
+	border-left: 2px dashed black;
+	border-bottom: 2px dashed black;
 }
