@@ -6,6 +6,7 @@ import { name as viewParliamentList } from '../viewParliamentList/viewParliament
 import { name as viewAgoraList } from '../viewAgoraList/viewAgoraList';
 import { name as viewParliament } from '../viewParliament/viewParliament';
 import { name as viewAgora } from '../viewAgora/viewAgora';
+import { name as menuButtons } from '../menuButtons/menuButtons';
 
 
 import template from './webMain.html';
@@ -17,6 +18,7 @@ class WebMain {}
 export default angular.module(name, [
   uiRouter,
   angularMeteor,
+  menuButtons,
   viewAgoraList,
   viewAgora,
   viewParliamentList,
