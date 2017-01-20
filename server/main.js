@@ -331,7 +331,48 @@ Meteor.startup(() => {
             {
                 'name': 'Euskadi',
                 'slug': 'euskadi'
+            },
+            {
+                'name': 'Castilla y León',
+                'slug': 'castilla-y-leon'
+            },
+            {
+                'name': 'Catalunya',
+                'slug': 'catalunya'
+            },
+            {
+                'name': 'Aragón',
+                'slug': 'aragon'
+            },
+            {
+                'name': 'Andalucía',
+                'slug': 'andalucia'
+            },
+            {
+                'name': 'Galicia',
+                'slug': 'galicia'
+            },
+            {
+                'name': 'Navarra',
+                'slug': 'navarra'
+            },
+            {
+                'name': 'Asturias',
+                'slug': 'asturias'
+            },
+            {
+                'name': 'Extremadura',
+                'slug': 'extremadura'
+            },
+            {
+                'name': 'Comunidad Valenciana',
+                'slug': 'comunidad-valenciana'
+            },
+            {
+                'name': 'Murcia',
+                'slug': 'murcia'
             }
+
         ],
         'settings' : {
           'nodes' : [0],

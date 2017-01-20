@@ -6,7 +6,7 @@
 	font-family:Sans-serif;
 }
 
-html, body{
+html, body, menu, h1, h2, h3, h4, h5, h6, span, header, main, footer{
 	margin:0;
 	padding:0;
 }
@@ -31,7 +31,7 @@ body {
 web-header {
 	display:block;
 	/*min-height: 20vh;*/
-	background:#006934;
+	background: /*#1C5F88*/ #006934;
 	/*border-bottom: 0.2px solid red;*/
 }
 
@@ -119,20 +119,20 @@ web-main {
 		display: flex;
 		flex-flow: row wrap;
 		/*background: white;*/
-		border: 3px solid #006934;
+		border: 6px solid #006934;
 		height: 128px;
 		margin-top:4.9vw;
 		padding:8px 10px;
 	}
 
 		.section-list article .article-header{
-			width: 30%;
+			width: 50%;
 			height: 90%;
 		}
 
 			.section-list article .article-header .article-title{
 				font-size:1.78rem;
-				text-align:left;
+				text-align: left;
 				margin-top: 0px;
 			}
 
@@ -152,16 +152,25 @@ web-main {
 				border-bottom: 2px solid #1C5F88;
 			}
 
-			.section-list article .article-header .button-area {
+			.section-list article .article-header .menu-buttons {
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: flex-start;
+				overflow-y: auto;
+			}
+
+			.section-list article .article-header .menu-buttons .button-area {
 				color: white;
 				background-color: #1C5F88;
 				border: none;
 				padding: 2px;
 				margin-left: 5px;
+				margin-top: 5px;
 				cursor: pointer;
 			}
+
 		.section-list article .article-main{
-			width:70%;
+			width:50%;
 			height: 90%;
 			font-size:0.7rem;
 			font-weight: bold;
@@ -195,6 +204,20 @@ web-main {
 		text-align:center;
 		text-decoration: underline;
 		font-size:0.8rem;
+	}
+
+	.section-single .section-header .menu-buttons{
+		display: flex;
+		flex-flow: row wrap;
+	}
+
+	.section-single .section-header .menu-buttons .button-area {
+		color: white;
+		background-color: #1C5F88;
+		border: none;
+		padding: 2px;
+		margin-left: 5px;
+		cursor: pointer;
 	}
 
 	.section-single canvas{
@@ -238,11 +261,22 @@ web-footer {
 }
 
 @media only screen and (max-width: 480px) and (orientation: portrait){
+	.section-list article .article-header .article-title{
+		margin-top: -10px;
+		font-size:1.78rem;
+		/*text-align: center;*/
+	}
 
+	.section-list article .article-header .article-title .article-title-text-agora,
+	.section-list article .article-header .article-subtitle,
+	.section-list article .article-header .article-subtitle span,
+	.section-list article .article-header .menu-buttons,
+	.section-list article .article-footer{
+		display: none;
+	}
 }
 
 @media only screen and (max-width: 480px) and (orientation: landscape){
-
 
 	#header .title {
     	font-size: 1.1rem;
@@ -258,6 +292,13 @@ web-footer {
 
 	.section-list article .article-header .article-title {
     	font-size: 0.88rem;
+	}
+
+	.section-list article .article-header .article-subtitle,
+	.section-list article .article-header .article-subtitle span,
+	.section-list article .article-header .menu-buttons,
+	.section-list article .article-footer{
+		display: none;
 	}
 
 }
@@ -282,8 +323,16 @@ web-footer {
 		height: 220px;
 	}
 
+	.section-list article .article-header{
+		width: 40%;
+	}
+
 	.section-list article .article-header .article-title {
     	font-size: 1rem;
+	}
+
+	.section-list article .article-main{
+		width: 60%;
 	}
 
 	.section-single .section-title {
@@ -312,8 +361,16 @@ web-footer {
 		height: 220px;
 	}
 
+	.section-list article .article-header{
+		width: 40%;
+	}
+
 	.section-list article .article-header .article-title {
     	font-size: 1rem;
+	}
+
+	.section-list article .article-main{
+		width: 60%;
 	}
 
 	.section-single .section-title {
@@ -343,8 +400,16 @@ web-footer {
 		height: 240px;
 	}
 
+	.section-list article .article-header{
+		width: 30%;
+	}
+
 	.section-list article .article-header .article-title {
     	font-size: 1.2rem;
+	}
+
+	.section-list article .article-main{
+		width: 70%;
 	}
 
 	.section-single .section-title {
@@ -375,8 +440,16 @@ web-footer {
 		height: 240px;
 	}
 
+	.section-list article .article-header{
+		width: 30%;
+	}
+
 	.section-list article .article-header .article-title {
     	font-size: 1.2rem;
+	}
+
+	.section-list article .article-main{
+		width: 70%;
 	}
 
 	.section-single .section-title {
@@ -433,7 +506,7 @@ web-footer {
 		display: inline-block;
 		width: 30%;
 		height: 148.5%;
-		background: #464646;
+		background-color: /*#006934 *//*#1C5F88*/;
 		position: absolute;
 		border:0;
 	}
