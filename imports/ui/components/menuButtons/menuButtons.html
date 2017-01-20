@@ -1,0 +1,8 @@
+<div ng-transclude=""></div>
+<menu class="menu-buttons">
+    <button class="button {{$ctrl.classes}}"
+            ng-repeat="item in $ctrl.items"
+            ui-sref="agora({agoraSlug: item.slug})">
+            {{item.name}}
+    </button>
+</menu>

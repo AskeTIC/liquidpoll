@@ -10,11 +10,12 @@
             <input type="radio" name="entitySelect" ng-click="viewAgora.vote(entity)">
         </div>
     </main>
-    <aside>
-        <h2 class="">Ágoras internas</h2>
-        <button class="button button-area" ng-repeat="subagora in viewAgora.agora.subagoras"
-                ui-sref="agora({agoraSlug: subagora.slug})">{{subagora.name}}
-        </button>
+    <aside class="aside-single">
+        <menu-buttons classes="button-area" items="viewAgora.agora.subagoras">
+            <h2 class="article-subtitle">
+                <span>ÁGORAS INTERNAS</span>
+            </h2>
+        </menu-buttons>
         <hr>
         <h2>Ágora superior</h2>
         <button class="button button-area" ui-sref="agora({agoraSlug: subagora.slug})">Algo</button>

@@ -2,15 +2,14 @@
     <article class="" ng-repeat="agora in viewAgoraList.agoras">
         <header class="article-header">
             <h1 class="article-title" ui-sref="agora({agoraSlug: agora.slug})">
-                <span>ÁGORA {{agora.name | uppercase}}</span>
+                <span class="article-title-text"><span class="article-title-text-agora">ÁGORA</span> {{agora.name | uppercase}}</span>
             </h1>
-            <p>Puedes participar!!</p>
-            <h2 class="article-subtitle">
-                <span>ÁGORAS INTERNAS</span>
-            </h2>
-            <button class="button button-area"
-                ng-repeat="subagora in agora.subagoras"
-                ui-sref="agora({agoraSlug: subagora.slug})">{{subagora.name}}</button>
+            <p>Puedes participar!</p>
+            <menu-buttons classes="button-area" items="agora.subagoras">
+                <h2 class="article-subtitle">
+                    <span>ÁGORAS INTERNAS</span>
+                </h2>
+            </menu-buttons>
         </header>
         <main class="article-main">
             <charts-bars slug="{{agora.slug}}" entities="agora.entities" options="viewAgoraList.options"></charts-bars>
