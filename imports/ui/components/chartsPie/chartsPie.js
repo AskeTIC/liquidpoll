@@ -10,14 +10,7 @@ class ChartsPie {
   constructor($stateParams, $scope, $reactive) {
     'ngInject';
     $reactive(this).attach($scope);
-    this.prueba = utils.round(2.599945457);
-    //console.log(this.entities);
-    //console.log(this.options);
-    //console.log(this.slug);
-    var id = this.slug;
-    var canvas = document.getElementById(this.slug);
-    console.log(canvas);
-
+    
     //TODO: mover a algún módulo y/o paquete
     /*
     for (var i = 0; i < answers.length; i++) {
