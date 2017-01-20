@@ -15,10 +15,6 @@ class ViewAgora {
     'ngInject';
     $reactive(this).attach($scope);
 
-    //recoger las entidades del ágora
-    //TODO: recoger directamente el array de la BBDD
-    //var agora = Agoras.findOne({name: $stateParams.agoraName }, {name: 0, description: 0, entities:1});
-
     var options = {
         bar : {
             width: 50,
@@ -31,12 +27,34 @@ class ViewAgora {
         }
     }
 
+    //TOKNOW: Que diceferencia hay entre $scope o this con reactive y con agregarlos mediante esta function helpers() ???
     this.helpers({
+        agora() {
+            return Agoras.findOne({slug: $stateParams.agoraSlug });
+        },
         options() {
             return options;
         },
-        agora() {
-            return Agoras.findOne({slug: $stateParams.agoraSlug });;
+        vote() {
+            return function(entity){
+                //TODO: Restar el voto anterior del usuario (client)
+                this.agora.entities.forEach(function(value, key){
+                    //TODO: Angular crea unas claves en los objetos que itera con ngRepeat,
+                    //Urigo dice que usarndo los helpers se soluciona, pero no veo como, he tenido que usar el delete.
+                    //por lo tanto no estamos libres de que aparezca otra clave de angular que Mongo no permita insertar.
+                    delete value.$$hashKey;
+                    console.log(value);
+                    if(entity.siglas === value.siglas){
+                        value.points += 1;
+                    }
+                })
+                Agoras.update(
+                    { _id: this.agora._id},
+                    { $set: { entities: this.agora.entities
+                            }
+                    }
+                );
+            };
         }
     });
   }

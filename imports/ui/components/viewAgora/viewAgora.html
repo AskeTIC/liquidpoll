@@ -1,5 +1,24 @@
 <section class="section-single">
-  <h1 class="section-title">Ágora {{viewAgora.agora.name}}</h1>
-  {{viewAgora.agora.entities}}
-  <charts-bars entities="viewAgora.agora.entities" options="viewAgora.options"></charts-bars>
+    <header>
+        <h1 class="section-title">Ágora {{viewAgora.agora.name}}</h1>
+        <charts-bars entities="viewAgora.agora.entities" options="viewAgora.options"></charts-bars>
+    </header>
+    <main>
+        <div ng-repeat="entity in viewAgora.agora.entities">
+            <span class="button button-position">{{$index + 1}}</span>|
+            <span>{{entity.name}}</span>
+            <input type="radio" name="entitySelect" ng-click="viewAgora.vote(entity)">
+        </div>
+    </main>
+    <aside>
+        <h2 class="">Ágoras internas</h2>
+        <button class="button button-area" ng-repeat="subagora in viewAgora.agora.subagoras"
+                ui-sref="agora({agoraSlug: subagora.slug})">{{subagora.name}}
+        </button>
+        <hr>
+        <h2>Ágora superior</h2>
+        <button class="button button-area" ui-sref="agora({agoraSlug: subagora.slug})">Algo</button>
+    </aside>
+    <footer>
+    </footer>
 </section>

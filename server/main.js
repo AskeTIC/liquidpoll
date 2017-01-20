@@ -18,11 +18,17 @@ Meteor.startup(() => {
             'country'   : 4, //conjunto de provincias (State en USA, comunidades autónomás en España, republica en Rusia, por ejemplo).
             'federation': 5  //conjunto de estados o paises (Rusia, USA, España, etc...).
         },
-        'types' : {
+        'area-type' : {
             'representative' : 1, //representative (la mierda actual)
             'direct'         : 2, //representative but direct (decisiones importantes por referendums)
             'liquid'         : 3, //liquid (todos proponemos y todos decidimos)
             'delegated'      : 4  //liquid but delegated (algunas personas delegan en otras ciertas decisiones)
+        },
+        'entity-type': {
+            'agrupación': 1,
+            'partido'   : 2,
+            'coalición' : 3,
+            'absorbido' : 4
         }
       }
     }];
@@ -37,27 +43,27 @@ Meteor.startup(() => {
         'description': 'República de Argentina.',
         'entities' : [
           {name: 'Frente para la victoria',
-           points: 250,
+           points: 15,
            percent:null,
            color:"brown" },
           {name: 'Cambiemos',
-           points: 200,
+           points: 4,
            percent:null,
            color:"pink"},
           {name: 'Justicia social',
-           points: 30,
+           points: 3,
            percent:null,
            color:"blue"},
           {name: 'Partido maligno',
-           points: 50,
+           points: 5,
            percent:null,
            color:"lightgreen"},
           {name: 'Iluminatis argentinos',
-           points: 250,
+           points: 2,
            percent:null,
            color:"violet"},
           {name: 'Todo por la plata',
-           points: 130,
+           points: 1,
            percent:null,
            color:"orange"}
         ],
@@ -73,27 +79,27 @@ Meteor.startup(() => {
         'description': 'Reino de España',
         'entities' : [
           {name: 'PP',
-           points: 250,
+           points: 0,
            percent:null,
            color:"brown" },
           {name: 'PSOE',
-           points: 200,
+           points: 2,
            percent:null,
            color:"pink"},
           {name: 'ERC',
-           points: 30,
+           points: 3,
            percent:null,
            color:"blue"},
           {name: 'PACMA',
-           points: 50,
+           points: 5,
            percent:null,
            color:"lightgreen"},
           {name: 'Unidos Podemos',
-           points: 220,
+           points: 12,
            percent:null,
            color:"violet"},
           {name: 'Ciudadanos',
-           points: 130,
+           points: 7,
            percent:null,
            color:"orange"}
         ],
@@ -109,27 +115,27 @@ Meteor.startup(() => {
         'description': 'Comunidad Autónoma del País Vasco',
         'entities':  [
           {name: 'PNV',
-           points: 250,
+           points: 5,
            percent:null,
            color:"brown" },
           {name: 'EH Bildu',
-           points: 200,
+           points: 15,
            percent:null,
            color:"pink"},
           {name: 'Ciudadanos',
-           points: 30,
+           points: 0,
            percent:null,
            color:"blue"},
           {name: 'PSOE',
-           points: 50,
+           points: 2,
            percent:null,
            color:"lightgreen"},
           {name: 'Elkarrekin Podemos',
-           points: 250,
+           points: 10,
            percent:null,
            color:"violet"},
           {name: 'PP',
-           points: 130,
+           points: 3,
            percent:null,
            color:"orange"}
         ],
@@ -151,46 +157,76 @@ Meteor.startup(() => {
         'slug': 'argentina',
         'description': 'Ágora argentina.',
         'entities' : [
-          {name: 'Cambiemos',
-           points: 250,
-           percent:null,
-           color:"blue" },
-          {name: 'Frente para la victoria',
-           points: 200,
-           percent:null,
-           color:"pink"},
-          {name: 'Justicia social',
-           points: 30,
-           percent:null,
-           color:"brown"},
-          {name: 'Todo por la plata',
-           points: 50,
-           percent:null,
-           color:"lightgreen"},
-          {name: 'Iluminatis argentinos',
-           points: 250,
-           percent:null,
-           color:"yellow"},
-          {name: 'Partido maligno',
-           points: 130,
-           percent:null,
-           color:"orange"},
-          {name: 'Agarralo como puedas',
-           points: 25,
-           percent:null,
-           color:"violet"},
-          {name: 'Los viejos verdes',
-           points: 340,
-           percent:null,
-           color:"green"},
-          {name: 'Los jovenes con el pindar rojo',
-           points: 400,
-           percent:null,
-           color:"red"},
-          {name: 'Los hombres de negro',
-           points: 450,
-           percent:null,
-           color:"lightblue"}
+            {
+                name: 'Cambiemos',
+                siglas: 'Cambiemos',
+                points: 5,
+                percent:null,
+                color:"blue"
+            },
+            {
+                name: 'Frente para la victoria',
+                siglas: 'FxV',
+                points: 2,
+                percent:null,
+                color:"pink"
+            },
+            {
+                name: 'Justicia social',
+                siglas: 'JS',
+                points: 3,
+                percent:null,
+                color:"brown"
+            },
+            {
+                name: 'Todo por la plata',
+                siglas: 'TxP',
+                points: 10,
+                percent:null,
+                color:"lightgreen"
+            },
+            {
+                name: 'Iluminatis argentinos',
+                siglas: 'Iluminatis',
+                points: 12,
+                percent:null,
+                color:"yellow"
+            },
+            {
+                name: 'Partido maligno',
+                siglas: 'PM',
+                points: 13,
+                percent:null,
+                color:"orange"
+            },
+            {
+                name: 'Agarralo como puedas',
+                siglas: 'Agarralo',
+                points: 7,
+                percent:null,
+                color:"violet"
+            },
+            {
+                name: 'Los viejos verdes',
+                siglas: 'LV',
+                points: 4,
+                percent:null,
+                color:"green"
+            },
+            {
+                name: 'Los jovenes con el pindar rojo',
+                siglas: 'PC',
+                points: 4,
+                percent:null,
+                color:"red"
+            },
+            {
+                name: 'Los hombres de negro',
+                siglas: 'Sociatas',
+                points: 1,
+                percent:null,
+                color:"lightblue"
+            }
         ],
         'subagoras': [
             {
@@ -213,46 +249,75 @@ Meteor.startup(() => {
         'slug': 'españa',
         'description': 'Ágora española',
         'entities' : [
-          {name: 'Cambiemos durante 200.000 años',
-           points: 250,
-           percent:null,
-           color:"blue" },
-          {name: 'Iluminatis del imperio de Espatraña',
-           points: 200,
-           percent:null,
-           color:"pink"},
-          {name: 'Partido Podrido',
-           points: 30,
-           percent:null,
-           color:"brown"},
-          {name: 'Partido por los animales en el puchero',
-           points: 50,
-           percent:null,
-           color:"lightgreen"},
-          {name: 'Justicia social para pablete y sus amigos',
-           points: 250,
-           percent:null,
-           color:"violet"},
-          {name: 'Todo por la patria',
-           points: 130,
-           percent:null,
-           color:"red"},
-          {name: 'Agarralo como puedas II',
-           points: 25,
-           percent:null,
-           color:"yellow"},
-          {name: 'Los viejos verdes II',
-           points: 340,
-           percent:null,
-           color:"green"},
-          {name: 'Los jovenes imperialistas con el pindar rojo',
-           points: 400,
-           percent:null,
-           color:"orange"},
-          {name: 'Los hombres de negro II',
-           points: 450,
-           percent:null,
-           color:"lightblue"}
+            {
+                name: 'Cambiemos durante 200.000 años',
+                siglas: 'EH Bildu',
+                points: 2,
+                percent:null,
+                color:"blue"
+            },
+            {
+                name: 'Iluminatis del imperio de Espatraña',
+                siglas: 'PSOE',
+                points: 2,
+                percent:null,
+                color:"pink"},
+            {
+                name: 'Partido Podrido',
+                siglas: 'PP',
+                points: 3,
+                percent:null,
+                color:"brown"
+            },
+            {
+                name: 'Partido por los animales en el puchero',
+                siglas: 'PACMA',
+                points: 5,
+                percent:null,
+                color:"lightgreen"
+            },
+            {
+                name: 'Justicia social para pablete y sus amigos',
+                siglas: 'UP',
+                points: 10,
+                percent:null,
+                color:"violet"
+            },
+            {
+                name: 'Todo por la patria',
+                siglas: 'PCPE',
+                points: 13,
+                percent:null,
+                color:"red"
+            },
+            {
+                name: 'Agarralo como puedas II',
+                siglas: 'JxS',
+                points: 15,
+                percent:null,
+                color:"yellow"
+            },
+            {
+                name: 'Los viejos verdes II',
+                siglas: 'Equo',
+                points: 9,
+                percent:null,
+                color:"green"
+            },
+            {
+                name: 'Los jovenes imperialistas con el pindar rojo',
+                siglas: 'Cs',
+                points: 4,
+                percent:null,
+                color:"orange"
+            },
+            {
+                name: 'Los hombres de negro II',
+                siglas: 'PNV',
+                points: 8,
+                percent:null,
+                color:"lightblue"
+            }
         ],
         'subagoras': [
             {
@@ -279,46 +344,71 @@ Meteor.startup(() => {
         'slug': 'euskadi',
         'description': 'Ágora vasca.',
         'entities':  [
-          {name: 'Beltzako gizonak III',
-           points: 250,
-           percent:null,
-           color:"lightblue" },
-          {name: 'Iluminatis vascos',
-           points: 200,
-           percent:null,
-           color:"brown"},
-          {name: 'Partido Petaniños',
-           points: 30,
-           percent:null,
-           color:"blue"},
-          {name: 'Hartu duzu III',
-           points: 50,
-           percent:null,
-           color:"lightgreen"},
-          {name: 'Justicia social para pablete y sus amigos (a la española)',
-           points: 250,
-           percent:null,
-           color:"violet"},
-          {name: 'Todo por la patria de al lado',
-           points: 130,
-           percent:null,
-           color:"orange"},
-          {name: 'Partido por los animales en el puchero (a la española)',
-           points: 25,
-           percent:null,
-           color:"yellow"},
-          {name: 'V de Berdeak III',
-           points: 340,
-           percent:null,
-           color:"green"},
-          {name: 'Los jovenes despistados con el pindar rojo',
-           points: 400,
-           percent:null,
-           color:"red"},
-          {name: 'Partido Regionalista Vasco',
-           points: 450,
-           percent:null,
-           color:"pink"}
+            {
+                name: 'Beltzako gizonak III',
+                siglas: 'PNV',
+                points: 5,
+                percent:null,
+                color:"lightblue"
+            },
+            {
+                name: 'Iluminatis vascos',
+                siglas: 'EH Bildu',
+                points: 14,
+                percent:null,
+                color:"brown"},
+            {
+                name: 'Partido Petaniños',
+                siglas: 'PP',
+                points: 3,
+                percent:null,
+                color:"blue"
+            },
+            {
+                name: 'Hartu duzu III',
+                siglas: 'PSOE',
+                points: 5,
+                percent:null,
+                color:"lightgreen"},
+            {
+                name: 'Justicia social para pablete y sus amigos (a la española)',
+                siglas: 'UP',
+                points: 10,
+                percent:null,
+                color:"violet"
+            },
+            {
+                name: 'Todo por la patria de al lado',
+                siglas: 'Cs',
+                points: 1,
+                percent:null,
+                color:"orange"
+            },
+            {
+                name: 'Partido por los animales en el puchero (a la española)',
+                siglas: 'PACMA',
+                points: 4,
+                percent:null,
+                color:"yellow"
+            },
+            {
+                name: 'V de Berdeak III',
+                siglas: 'Equo',
+                points: 8,
+                percent:null,
+                color:"green"},
+            {
+                name: 'Los jovenes despistados con el pindar rojo',
+                siglas: 'PCPE',
+                points: 0,
+                percent:null,
+                color:"red"},
+            {
+                name: 'Partido Regionalista Vasco',
+                siglas: 'PNV',
+                points: 6,
+                percent:null,
+                color:"pink"}
         ],
         'subagoras': [
             {
