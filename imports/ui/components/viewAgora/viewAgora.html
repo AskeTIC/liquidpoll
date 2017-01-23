@@ -5,20 +5,22 @@
     </header>
     <main>
         <div ng-repeat="entity in viewAgora.agora.entities">
-            <span class="button button-position">{{$index + 1}}</span>|
-            <span>{{entity.name}}</span>
+            <button class="button button-position">{{$index + 1}}</button>
+            <span>{{entity.name}}</span> ({{entity.points}} votos)
             <input type="radio" name="entitySelect" ng-click="viewAgora.vote(entity)">
         </div>
     </main>
-    <aside class="aside-single">
-        <menu-buttons classes="button-area" items="viewAgora.agora.subagoras">
-            <h2 class="article-subtitle">
+    <aside>
+        <menu-buttons class="subareas" classes="button-area" items="viewAgora.agora.subagoras">
+            <h2 class="subareas-title">
                 <span>ÁGORAS INTERNAS</span>
             </h2>
         </menu-buttons>
-        <hr>
-        <h2>Ágora superior</h2>
-        <button class="button button-area" ui-sref="agora({agoraSlug: subagora.slug})">Algo</button>
+        <menu-buttons class="topareas" classes="button-area" items="viewAgora.agora.topagoras">
+            <h2 class="topareas-title">
+                <span>ÁGORAS SUPERIORES</span>
+            </h2>
+        </menu-buttons>
     </aside>
     <footer>
     </footer>

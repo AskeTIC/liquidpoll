@@ -6,7 +6,7 @@
 	font-family:Sans-serif;
 }
 
-html, body, menu, h1, h2, h3, h4, h5, h6, span, header, main, footer{
+html, body, menu, h1, h2, h3, h4, h5, h6, span, header, main, aside, footer{
 	margin:0;
 	padding:0;
 }
@@ -194,36 +194,123 @@ web-main {
 
 /*Single page section*/
 .section-single {
-	/*TODO: header, etc...*/
+	display:flex;
+	flex-flow: row wrap;
+	width: 90%;
+	margin:0 auto;
+	margin-top: 15px;
+	height: 100%;
+	min-height: 65%;
 }
 
-	.section-single .section-title{
-		margin:10px auto;
-		text-transform: uppercase;
-		color:#1C5F88;
-		text-align:center;
-		text-decoration: underline;
-		font-size:0.8rem;
+	.section-single header {
+		width: 100%;
+		border: 1px solid green;
 	}
 
-	.section-single .section-header .menu-buttons{
+		.section-single .section-title{
+			margin:10px auto;
+			text-transform: uppercase;
+			color:#1C5F88;
+			text-align:center;
+			text-decoration: underline;
+			font-size:0.8rem;
+		}
+
+	.section-single main {
+		flex-grow: 1;
+		width: 55%;
+		border: 1px solid green;
+		margin-top: 10px;
+
+	}
+
+		.section-single main .button-position {
+			color: white;
+			background-color: #006934;
+			border: none;
+			width: 28px;
+			height: 28px;
+			padding: 2px;
+			margin-left: 5px;
+			margin-top: 5px;
+		}
+
+	.section-single aside {
+		flex-grow: 1;
 		display: flex;
 		flex-flow: row wrap;
+		width: 44%;
+		border: 1px solid green;
+		margin-top: 10px;
 	}
 
-	.section-single .section-header .menu-buttons .button-area {
-		color: white;
-		background-color: #1C5F88;
-		border: none;
-		padding: 2px;
-		margin-left: 5px;
-		cursor: pointer;
-	}
+		.section-single aside .subareas {
+			width: 100%;
+		}
 
-	.section-single canvas{
-		background:white;
-	  	border: 0px solid rgb(255, 255, 255);
-	  	width: 100%;
+			.section-single aside .subareas .subareas-title{
+				font-size:0.88rem;
+				text-align:center;
+				margin-top: 8px;
+			}
+
+				.section-single aside .subareas .subareas-title span {
+					color: #006934;
+					border-bottom: 2px solid #006934;
+				}
+
+			.section-single aside .subareas .menu-buttons {
+				display: flex;
+				flex-flow: row wrap;
+				overflow-y: auto;
+				margin-top: 8px;
+			}
+
+				.section-single aside .subareas .menu-buttons .button-area {
+					color: white;
+					background-color: #1C5F88;
+					border: none;
+					padding: 2px;
+					margin-left: 5px;
+					margin-top: 5px;
+					cursor: pointer;
+				}
+
+		.section-single aside .topareas {
+			width: 100%;
+		}
+
+			.section-single aside .topareas .topareas-title{
+				font-size:0.88rem;
+				text-align:center;
+				margin-top: 8px;
+			}
+
+				.section-single aside .topareas .topareas-title span {
+					color: #006934;
+					border-bottom: 2px solid #006934;
+				}
+
+			.section-single aside .topareas .menu-buttons {
+				display: flex;
+				flex-flow: row wrap;
+				overflow-y: auto;
+				margin-top: 8px;
+			}
+
+				.section-single aside .topareas .menu-buttons .button-area {
+					color: white;
+					background-color: #1C5F88;
+					border: none;
+					padding: 2px;
+					margin-left: 5px;
+					margin-top: 5px;
+					cursor: pointer;
+				}
+
+	.section-single footer {
+		width: 100%;
 	}
 
 /*ASIDE PAGE*/
@@ -521,7 +608,7 @@ web-footer {
 
 
 /**ESTILOS COMPONENTES*/
-.chart-bars{
+.section-single .chart-bars, .section-list .chart-bars{
 	border-left: 3px solid black;
 	border-bottom: 3px solid black;
 }
