@@ -11,7 +11,7 @@ Meteor.startup(() => {
     const settings = [{
       'node' : 0,
       'settings' : {
-        'area' : {
+        'area-level' : {
             'barrio'    : 1, //conjunto de calles y/o parcelas de terreno (distritos).
             'municipio' : 2, //conjunto de barrios (ciudad, pueblo, villa, etc...).
             'provincia' : 3, //conjunto de municipios (condado en USA por ejemplo).
@@ -153,98 +153,100 @@ Meteor.startup(() => {
   if(Agoras.find().count() === 0) {
     const agoras = [
         {
-        'name': 'Argentina',
-        'slug': 'argentina',
-        'description': 'Ágora argentina.',
-        'entities' : [
-            {
-                name: 'Cambiemos',
-                siglas: 'Cambiemos',
-                points: 5,
-                percent:null,
-                color:"blue"
-            },
-            {
-                name: 'Frente para la victoria',
-                siglas: 'FxV',
-                points: 2,
-                percent:null,
-                color:"pink"
-            },
-            {
-                name: 'Justicia social',
-                siglas: 'JS',
-                points: 3,
-                percent:null,
-                color:"brown"
-            },
-            {
-                name: 'Todo por la plata',
-                siglas: 'TxP',
-                points: 10,
-                percent:null,
-                color:"lightgreen"
-            },
-            {
-                name: 'Iluminatis argentinos',
-                siglas: 'Iluminatis',
-                points: 12,
-                percent:null,
-                color:"yellow"
-            },
-            {
-                name: 'Partido maligno',
-                siglas: 'PM',
-                points: 13,
-                percent:null,
-                color:"orange"
-            },
-            {
-                name: 'Agarralo como puedas',
-                siglas: 'Agarralo',
-                points: 7,
-                percent:null,
-                color:"violet"
-            },
-            {
-                name: 'Los viejos verdes',
-                siglas: 'LV',
-                points: 4,
-                percent:null,
-                color:"green"
-            },
-            {
-                name: 'Los jovenes con el pindar rojo',
-                siglas: 'PC',
-                points: 4,
-                percent:null,
-                color:"red"
-            },
-            {
-                name: 'Los hombres de negro',
-                siglas: 'Sociatas',
-                points: 1,
-                percent:null,
-                color:"lightblue"
+            'name': 'Argentina',
+            'slug': 'argentina',
+            'description': 'Ágora argentina.',
+            'entities' : [
+                {
+                    name: 'Cambiemos',
+                    siglas: 'Cambiemos',
+                    points: 5,
+                    percent:null,
+                    color:"blue"
+                },
+                {
+                    name: 'Frente para la victoria',
+                    siglas: 'FxV',
+                    points: 2,
+                    percent:null,
+                    color:"pink"
+                },
+                {
+                    name: 'Justicia social',
+                    siglas: 'JS',
+                    points: 3,
+                    percent:null,
+                    color:"brown"
+                },
+                {
+                    name: 'Todo por la plata',
+                    siglas: 'TxP',
+                    points: 10,
+                    percent:null,
+                    color:"lightgreen"
+                },
+                {
+                    name: 'Iluminatis argentinos',
+                    siglas: 'Iluminatis',
+                    points: 12,
+                    percent:null,
+                    color:"yellow"
+                },
+                {
+                    name: 'Partido maligno',
+                    siglas: 'PM',
+                    points: 13,
+                    percent:null,
+                    color:"orange"
+                },
+                {
+                    name: 'Agarralo como puedas',
+                    siglas: 'Agarralo',
+                    points: 7,
+                    percent:null,
+                    color:"violet"
+                },
+                {
+                    name: 'Los viejos verdes',
+                    siglas: 'LV',
+                    points: 4,
+                    percent:null,
+                    color:"green"
+                },
+                {
+                    name: 'Los jovenes con el pindar rojo',
+                    siglas: 'PC',
+                    points: 4,
+                    percent:null,
+                    color:"red"
+                },
+                {
+                    name: 'Los hombres de negro',
+                    siglas: 'Sociatas',
+                    points: 1,
+                    percent:null,
+                    color:"lightblue"
+                }
+            ],
+            'subagoras': [
+                {
+                    'name': 'Cordoba',
+                    'slug': 'cordoba'
+                },
+                {
+                    'name': 'Buenos Aires',
+                    'slug': 'buenos-aires'
+                }
+            ],
+            'topagoras': [
+            ],
+            'settings' : {
+              'nodes' : [1],
+              'area-level'  : 4,
+              'area-type'  : 3
             }
-        ],
-        'subagoras': [
-            {
-                'name': 'Cordoba',
-                'slug': 'cordoba'
-            },
-            {
-                'name': 'Buenos Aires',
-                'slug': 'buenos-aires'
-            }
-        ],
-        'settings' : {
-          'nodes' : [1],
-          'area'  : 4,
-          'type'  : 3
-        }
-      },
-      {
+        },
+        {
         'name': 'España',
         'slug': 'españa',
         'description': 'Ágora española',
@@ -374,10 +376,22 @@ Meteor.startup(() => {
             }
 
         ],
+        'topagoras': [
+            {
+                'name': 'Europa',
+                'slug': 'europa',
+                'area-level': 6
+            },
+            {
+                'name': 'Planeta tierra',
+                'slug': 'planeta-tierra',
+                'area-level': 7
+            }
+        ],
         'settings' : {
           'nodes' : [0],
-          'area'  : 5,
-          'type'  : 3
+          'area-level'  : 5,
+          'area-type'  : 3
         }
       },
       {
@@ -465,10 +479,27 @@ Meteor.startup(() => {
                 'slug': 'gipuzkoa'
             }
         ],
+        'topagoras': [
+            {
+                'name': 'España',
+                'slug': 'españa',
+                'area-level': 5
+            },
+            {
+                'name': 'España',
+                'slug': 'españa',
+                'area-level': 6
+            },
+            {
+                'name': 'Planeta tierra',
+                'slug': 'planeta-tierra',
+                'area-level': 7
+            }
+        ],
         'settings' : {
           'nodes' : [0],
-          'area'  : 4,
-          'type'  : 3
+          'area-level'  : 4,
+          'area-type'  : 3
         }
       }
     ];
