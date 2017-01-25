@@ -6,7 +6,7 @@
 	font-family:Sans-serif;
 }
 
-html, body, menu, h1, h2, h3, h4, h5, h6, span, header, main, aside, footer{
+html, body, menu, h1, h2, h3, h4, h5, h6, span, header, main, aside, footer, img, nav, ul, li{
 	margin:0;
 	padding:0;
 }
@@ -19,7 +19,6 @@ body {
 	min-height:100%;
 	margin: 0 auto;
 	height:100%;
-	margin-top:-16px;
 	/*background:#748793;*/
 	/*border-bottom: 5px solid gray;*/
 }
@@ -32,55 +31,61 @@ web-header {
 	display:block;
 	/*min-height: 20vh;*/
 	background: /*#1C5F88*/ #006934;
-	/*border-bottom: 0.2px solid red;*/
+	/*border-bottom: 0.2px sosssssslid red;*/
 }
 
 #header{
-	display:flex;
+	display: flex;
+	flex-flow: row;
 	width:100%;
 	height: 70px;
 }
 
-	#header .logo{
-		padding:13px 0px 11px 0px;
-		text-align:center;
-		display:none;
-	}
-
 	#header .title{
-			/*TODO: aling, margin, color, etc...*/
-			position: absolute;
-			margin-left: 10px;
-			top: -4px;
-			color: #FFF;
-			text-decoration: underline;
-			font-size: 1.1rem;
-		}
-
-	.navigation{
-		display:inline-block;
-		font-size:1rem;
-		width:100%;
+		display: flex;
+		flex-flow: row;
+		align-items: center;
+		/*TODO: aling, margin, color, etc...*/
+		/*position: absolute;*/
+		width: 50%;
 	}
 
-		.navigation nav{
-			/*TODO: ¿?*/
+		#header .title .logo{
+			height: 50px;
+			width: 50px;
+			margin-left: 20px;
 		}
 
-			.navigation nav ul{
-				list-style:none;
+		#header .title .title-text{
+			color: #fff;
+			font-size: 1.7rem;
+			margin-left: 20px;
+		}
+
+	#header .navigation{
+		font-size: 2rem;
+		width:50%;
+	}
+
+		#header .navigation nav{
+			/*TODO: ¿?*/
+			width: 100%;
+			height: 100%;
+		}
+
+			#header .navigation nav ul{
 				display:flex;
-				flex-flow:row reverse;
+				flex-flow:row ;
 				justify-content:flex-end;
-			    margin-bottom: 6px;
-			    margin-top: 30px;
+				align-items: center;
+				list-style:none;
+				width: 100%;
+				height: 100%;
 			}
 
-				.navigation nav ul li{
+				#header .navigation nav ul li{
 					color:white;
-					font-size:0.7rem;
 					text-decoration:underline;
-					display:inline;
 					margin-right:10px;
 				}
 
@@ -88,19 +93,21 @@ web-header {
 web-main {
 	display:block;
 	min-height: 75vh;
+	border-right: 5px solid #006934;
+	/*margin-top: 25px;*/
 	/*background:#748793;*/
 	/*border-bottom: 0.2px solid red;*/
 }
 
-#main > div {
-	/*No parece funcionar sin absolute
-	asi que lo ponemos y le damos la misma altura que al padre*/
-  /*HEight necesita siempre ser absolute a no ser que sea un elemento flexbox ?? */
-	display:block;
-	height: 68%;
-	/*border-bottom: 4px solid green;*/
-	margin-bottom:15px;
-}
+	#main > div {
+		/*No parece funcionar sin absolute
+		asi que lo ponemos y le damos la misma altura que al padre*/
+	  /*HEight necesita siempre ser absolute a no ser que sea un elemento flexbox ?? */
+		display:block;
+		height: 68%;
+		/*border-bottom: 4px solid green;*/
+		margin-bottom:15px;
+	}
 
 /*List page section*/
 .section-list {
@@ -199,13 +206,13 @@ web-main {
 	width: 90%;
 	margin:0 auto;
 	margin-top: 15px;
+	padding: 15px;
 	height: 100%;
 	min-height: 65%;
 }
 
 	.section-single header {
 		width: 100%;
-		border: 1px solid green;
 	}
 
 		.section-single .section-title{
@@ -220,8 +227,8 @@ web-main {
 	.section-single main {
 		flex-grow: 1;
 		width: 55%;
-		border: 1px solid green;
 		margin-top: 10px;
+		border-right: 2px solid #006934;
 
 	}
 
@@ -241,7 +248,6 @@ web-main {
 		display: flex;
 		flex-flow: row wrap;
 		width: 44%;
-		border: 1px solid green;
 		margin-top: 10px;
 	}
 
@@ -315,8 +321,11 @@ web-main {
 
 /*ASIDE PAGE*/
 web-sidebar {
-	border-top: 2px solid black;
+
 }
+
+	#sidebar {
+	}
 
 /*FOOTER PAGE*/
 web-footer {
@@ -328,13 +337,13 @@ web-footer {
 	display:none;
 }
 
-#footer {
-	/*background-color: purple;*/
-	color:white;
-	position:absolute;
-	width:100%;
-	background:black;
-}
+	#footer {
+		/*background-color: purple;*/
+		color:white;
+		position:absolute;
+		width:100%;
+		background:black;
+	}
 
 .footer-page{
 }
