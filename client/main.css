@@ -1,3 +1,49 @@
+@font-face {
+   	font-family: 'Diogenes';
+	src: url("/fonts/diogenes/diogenes.ttf");
+}
+@font-face {
+	font-family: 'Geek';
+	src: url("/fonts/ancient_geek/geek.ttf");
+}
+@font-face {
+	font-family: 'Gelio Fasolada';
+	src: url("/fonts/gelio/Gelio_Fasolada.ttf");
+}
+@font-face {
+	font-family: 'Gelio Kleftiko';
+	src: url("/fonts/gelio/Gelio_Kleftiko.ttf");
+}
+@font-face {
+	font-family: 'Gelio Retsina';
+	src: url("/fonts/gelio/Gelio_Retsina.ttf");
+}
+@font-face {
+	font-family: 'Art Greco';
+	src: url("/fonts/art_greco/art_greco.ttf");
+}
+@font-face {
+	font-family: 'Cleopatra';
+	src: url("/fonts/cleopatra/cleopatra.ttf");
+}
+@font-face {
+	font-family: 'Dalek';
+	src: url("/fonts/dalek/dalek.ttf");
+}
+@font-face {
+	font-family: 'Triatlhon In';
+	src: url("/fonts/triatlhon_in/triatlhon_in.ttf");
+}
+@font-face {
+	font-family: 'Alphabet';
+	src: url("/fonts/alphabet.ttf");
+}
+@font-face {
+	font-family: 'Archeologica Ps';
+	src: url("/fonts/archeologicaps.ttf");
+}
+
+
 /* RESOLUCION GENERAL (MOBILE FIRST)*/
 /*ESTILOS GENERALES*/
 * {
@@ -6,7 +52,8 @@
 	font-family:Sans-serif;
 }
 
-html, body, menu, h1, h2, h3, h4, h5, h6, span, header, main, aside, footer, img, nav, ul, li{
+html, body, menu, h1, h2, h3, h4, h5, h6, span,
+header, main, aside, footer, img, nav, ul, li{
 	margin:0;
 	padding:0;
 }
@@ -51,15 +98,16 @@ web-header {
 	}
 
 		#header .title .logo{
-			height: 50px;
-			width: 50px;
+			height: 45px;
+			width: 45px;
 			margin-left: 20px;
 		}
 
 		#header .title .title-text{
 			color: #fff;
-			font-size: 1.7rem;
+			font-size: 2.4rem;
 			margin-left: 20px;
+			font-family: 'Dalek';
 		}
 
 	#header .navigation{
