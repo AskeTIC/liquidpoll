@@ -4,10 +4,12 @@
 </head>
 
 <body ng-app="webapp" ng-strict-di="">
-  <div class="container" >
-      <web-header></web-header>
-      <web-main></web-main>
-      <web-sidebar></web-sidebar>
-      <web-footer></web-footer>
-  </div>
+    <div class="container" >
+        <web-header></web-header>
+        <div class="content">
+            <web-main></web-main>
+            <web-sidebar></web-sidebar>
+        </div>
+        <web-footer></web-footer>
+    </div>
 </body>

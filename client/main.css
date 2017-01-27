@@ -18,7 +18,7 @@ html, body {
 
 .container {
     display: flex;
-	flex-flow: row wrap;
+	flex-direction: column;
 	height: 100vh;
 }
 
@@ -29,28 +29,32 @@ web-header {
 	background: /*#1C5F88*/ #006934;
 }
 
-/*MAIN PAGE*/
-web-main {
+
+.content {
+	flex-grow: 1;
+	display: flex;
+	flex-flow: row wrap;
 	width: 100%;
-	border: 2px solid blue;
+	/*border: 2px solid blue;*/
 }
-
-
-/*ASIDE PAGE*/
-web-sidebar {
-	width: 100%;
-	margin-top: 20px;
-    border: 3px solid brown;
-}
-
 
 /*FOOTER PAGE*/
 web-footer {
 	height:40px;
+	min-height:40px;
     width: 100%;
 	margin-top: 20px;
-	bottom: 0;
 }
+
+/*MAIN PAGE*/
+web-main {
+	width: 100%;
+}
+/*ASIDE PAGE*/
+web-sidebar {
+	width: 100%;
+}
+
 
 
 #header{
