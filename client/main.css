@@ -7,47 +7,63 @@
 }
 
 html, body, menu, h1, h2, h3, h4, h5, h6, span,
-header, main, aside, footer, img, nav, ul, li{
+header, main, aside, footer, section, article, img, nav, ul, li{
 	margin:0;
 	padding:0;
 }
 
-body {
+html, body {
+	height: 100vh;
 }
 
 .container {
-	display: block;
-	min-height:100%;
-	margin: 0 auto;
-	height:100%;
-	/*background:#748793;*/
-	/*border-bottom: 5px solid gray;*/
+    display: flex;
+	flex-flow: row wrap;
+	height: 100vh;
 }
-
-/*Colores corporativos*/
-
 
 /*HEADER PAGE*/
 web-header {
-	display:block;
-	/*min-height: 20vh;*/
+	width: 100%;
+	height: 70px;
 	background: /*#1C5F88*/ #006934;
-	/*border-bottom: 0.2px sosssssslid red;*/
 }
+
+/*MAIN PAGE*/
+web-main {
+	width: 100%;
+	border: 2px solid blue;
+}
+
+
+/*ASIDE PAGE*/
+web-sidebar {
+	width: 100%;
+	margin-top: 20px;
+    border: 3px solid brown;
+}
+
+
+/*FOOTER PAGE*/
+web-footer {
+	height:40px;
+    width: 100%;
+	margin-top: 20px;
+	bottom: 0;
+}
+
 
 #header{
 	display: flex;
 	flex-flow: row;
 	width:100%;
-	height: 70px;
+	height: 100%;
 }
 
 	#header .title{
 		display: flex;
 		flex-flow: row;
 		align-items: center;
-		/*TODO: aling, margin, color, etc...*/
-		/*position: absolute;*/
 		width: 50%;
 	}
 
@@ -66,11 +82,10 @@ web-header {
 
 	#header .navigation{
 		font-size: 2rem;
-		width:50%;
+		width:49%;
 	}
 
 		#header .navigation nav{
-			/*TODO: ¿?*/
 			width: 100%;
 			height: 100%;
 		}
@@ -91,25 +106,9 @@ web-header {
 					margin-right:10px;
 				}
 
-/*MAIN PAGE*/
-web-main {
-	display:block;
-	min-height: 75vh;
-	border-right: 5px solid #006934;
-	/*margin-top: 25px;*/
-	/*background:#748793;*/
-	/*border-bottom: 0.2px solid red;*/
-}
+#main > div {
 
-	#main > div {
-		/*No parece funcionar sin absolute
-		asi que lo ponemos y le damos la misma altura que al padre*/
-	  /*HEight necesita siempre ser absolute a no ser que sea un elemento flexbox ?? */
-		display:block;
-		height: 68%;
-		/*border-bottom: 4px solid green;*/
-		margin-bottom:15px;
-	}
+}
 
 /*List page section*/
 .section-list {
@@ -130,7 +129,7 @@ web-main {
 		/*background: white;*/
 		border: 6px solid #006934;
 		height: 128px;
-		margin-top:4.9vw;
+		margin-top:30px;
 		padding:8px 10px;
 	}
 
@@ -321,44 +320,30 @@ web-main {
 		width: 100%;
 	}
 
-/*ASIDE PAGE*/
-web-sidebar {
 
+
+#sidebar {
 }
 
-	#sidebar {
-	}
-
-/*FOOTER PAGE*/
-web-footer {
-	display:block;
-	clear:both;
-	background-color: #000;
-	/*border-bottom: 0.2px solid red;*/
-	min-height:5vh;
-	display:none;
+#footer {
+	background-color: black;
+	color:white;
+	width:100%;
+    height: 100%;
 }
 
-	#footer {
-		/*background-color: purple;*/
-		color:white;
-		position:absolute;
-		width:100%;
-		background:black;
-	}
-
-.footer-page{
-}
+    .footer-page{
+    }
 
 
 /*FORMS*/
 
-
-@media only screen and (orientation: landscape){
-
-}
-
 @media only screen and (max-width: 480px) and (orientation: portrait){
+
+    web-main {
+    	border-right: none;
+    }
+
 	.section-list article .article-header .article-title{
 		margin-top: -10px;
 		font-size:1.78rem;
@@ -384,8 +369,13 @@ web-footer {
     	font-size: 0.7rem;
 	}
 
+
+    web-main {
+    	border-right: none;
+    }
+
 	.section-list article {
-		margin-top:4.9vw;
+		margin-top:30px;
 	}
 
 	.section-list article .article-header .article-title {
@@ -559,6 +549,29 @@ web-footer {
 /* RESOLUCION MAS DE 1024px */
 @media only screen and (min-width: 1025px){
 
+	.container {
+	}
+
+	/*HEADER PAGE*/
+	web-header {
+	}
+
+	/*MAIN PAGE*/
+	web-main {
+		width: 70%;
+	}
+
+	/*ASIDE PAGE*/
+	web-sidebar {
+		width: 29%;
+		margin-top: 0px;
+	    border: 3px solid brown;
+	}
+
+	/*FOOTER PAGE*/
+	web-footer {
+	}
+
 	#header .title {
 		font-size: 1.9rem;
 		top: -16px;
@@ -566,14 +579,6 @@ web-footer {
 
 	#header .navigation nav ul li {
 		font-size: 1.2rem;
-	}
-
-	/*MAIN PAGE*/
-	web-main {
-		display:relative;
-		min-height: 75vh;
-		width:70%;
-		display:inline-block;
 	}
 
 	.section-list{
@@ -597,26 +602,12 @@ web-footer {
 		font-size: 1.5rem;
 	}
 
-
-
-	/*REVISAR*/
-	web-sidebar{
-		display: inline-block;
-		width: 30%;
-		height: 148.5%;
-		background-color: /*#006934 *//*#1C5F88*/;
-		position: absolute;
-		border:0;
-	}
-
 }
 
 /* RESOLUCION MAS DE 1280px */
 @media only screen and (min-width: 1281px) {
 
 }
-
-
 
 /**ESTILOS COMPONENTES*/
 .section-single .chart-bars, .section-list .chart-bars{
