@@ -1,7 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
-import { Agoras } from '../../../api/agoras';
+import { Agoras } from '../../../api/agoras/agoras'; //this cursors is going to work with monimongo
 
 //Componentes incluidos (dependencias)
 import { name as chartsBars } from '../chartsBars/chartsBars';

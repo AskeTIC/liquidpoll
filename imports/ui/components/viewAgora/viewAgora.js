@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 //TODO: Recibir por get o post el objeto con el 'parli' en lugar de hacer otra consulta a la BBDD
-import { Agoras } from '../../../api/agoras';
+import { Agoras } from '../../../api/agoras/agoras'; //this cursors is going to work with monimongo
 
 //Componentes incluidos (dependencias)
 import { name as chartsBars } from '../chartsBars/chartsBars';

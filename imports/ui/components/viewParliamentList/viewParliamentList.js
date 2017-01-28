@@ -1,7 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
-import { Parliaments } from '../../../api/parliaments';
+import { Parliaments } from '../../../api/parliaments/parliaments'; //this cursors is going to work with monimongo
 
 import template from './viewParliamentList.html';
 const name = 'viewParliamentList';

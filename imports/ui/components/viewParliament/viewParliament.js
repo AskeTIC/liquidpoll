@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 //TODO: Recibir por get o post el objeto con el 'parli' en lugar de hacer otra consulta a la BBDD
-import { Parliaments } from '../../../api/parliaments';
+import { Parliaments } from '../../../api/parliaments/parliaments'; //this cursors is going to work with monimongo
 
 import template from './viewParliament.html';
 const name = 'viewParliament';
