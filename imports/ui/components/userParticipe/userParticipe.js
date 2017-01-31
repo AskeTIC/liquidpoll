@@ -6,15 +6,14 @@ import template from './userParticipe.html';
 const name = 'userParticipe';
 
 class UserParticipe {
-  constructor($stateParams, $scope, $reactive) {
-    'ngInject';
-    $reactive(this).attach($scope);
-    console.log('userParticipe Controller !!!!!!!!!!!!!');
-    //TODO: Consultar participantes en Agora.
+    constructor($stateParams, $scope, $reactive) {
+        'ngInject';
+        $reactive(this).attach($scope);
+        console.log('userParticipe Controller !!!!!!!!!!!!!');
+        //TODO: Consultar si el user puede participar en el agora y mostrar un componente u otro.
+        //TODO: Consultar participación del usuario en el agora
 
-    this.votes.forEach(function(value, key){});
-  }
-
+    }
 }
 
 // create a module with a componente
@@ -22,9 +21,9 @@ export default angular.module( name, [
     angularMeteor ])
     .component(name, {
         bindings: {
-            votes: '<',
+            agora: '&',
         },
         templateUrl: template,
-        controller: MenuButtons,
+        controller: UserParticipe,
     }
 );
