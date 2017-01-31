@@ -43,6 +43,7 @@ class ChartsBars{
     this.$onChanges = function(changes){
         console.log('On Changes!! XD');
         console.log(changes);
+        barsChart.clearCanvas();
         that.sortEntities(that.entities);
         barsChart.setBars(that.entities);
     }
