@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 //import angularElastic from 'angular-elastic';
@@ -14,3 +15,20 @@ angular.module('webapp', [
   webHeader,
   webFooter
 ]);
+
+Meteor.subscribe('agoras', {
+    onStart: function () {
+      console.log("Subscrito a todas las agoras");
+    },
+    onReady: function () {
+      console.log("Preparada la subscripcion y los items han llegado");
+      //subscriptionHandle.stop();  // Stopping the subscription, will cause onStop to fire
+    },
+    onStop: function (error) {
+      if (error) {
+        console.log('An error happened - ', error);
+      } else {
+        console.log('The subscription stopped');
+      }
+    }
+})
