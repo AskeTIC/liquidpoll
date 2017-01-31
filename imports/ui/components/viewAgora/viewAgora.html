@@ -1,14 +1,10 @@
 <section class="section-single">
     <header>
         <h1 class="section-title">Ágora {{viewAgora.agora.name}}</h1>
-        <charts-bars entities="viewAgora.agora.entities" options="viewAgora.options"></charts-bars>
+        <charts-bars ng-if="viewAgora.agora" entities="viewAgora.agora.entities" options="viewAgora.options"></charts-bars>
     </header>
     <main>
-        <div ng-repeat="entity in viewAgora.agora.entities">
-            <button class="button button-position">{{$index + 1}}</button>
-            <span>{{entity.name}}</span> ({{entity.points}} votos)
-            <input type="radio" name="entitySelect" ng-click="viewAgora.vote(entity)">
-        </div>
+        <user-votes on-user-vote="viewAgora.userVote($event)" entities="viewAgora.agora.entities"></user-votes>
     </main>
     <aside>
         <menu-buttons class="subareas" classes="button-area" items="viewAgora.agora.subagoras">

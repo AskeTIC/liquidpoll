@@ -1,0 +1,5 @@
+<div ng-repeat="entity in $ctrl.entities | orderBy: entity.points">
+    <button class="button button-position">{{$index + 1}}</button>
+    <span>{{entity.name}}</span> ({{entity.points}} votos)
+    <input type="radio" name="entitySelect" ng-click="$ctrl.vote(entity)">
+</div>
