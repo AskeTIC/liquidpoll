@@ -12,7 +12,7 @@ export default angular.module( name, [
   //uiRouter,
   angularMeteor ])
     .component(name, {
-      templateUrl: template,
+      template,
       controller: WebFooter
     }
 );

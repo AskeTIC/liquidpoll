@@ -41,7 +41,7 @@ export default angular.module( name, [
             onUserVote: '&',
             type: '&',
         },
-        templateUrl: template,
+        template,
         controller: UserVotes,
     }
 );

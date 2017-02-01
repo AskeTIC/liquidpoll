@@ -48,7 +48,7 @@ export default angular.module(name, [
   uiRouter,
   chartsBars])
 	.component(name, {
-		templateUrl: template,
+		template,
 		controllerAs: name,
 		controller: ViewAgoraList
 	})

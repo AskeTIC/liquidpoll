@@ -10,6 +10,7 @@ import { name as chartsBars } from '../chartsBars/chartsBars';
 import { name as userVotes } from '../userVotes/userVotes';
 
 import template from './viewAgora.html';
+console.log(template);
 const name = 'viewAgora';
 
 class ViewAgora {
@@ -72,7 +73,7 @@ export default angular.module(name, [
         userVotes
     ])
 	.component(name, {
-		templateUrl: template,
+		template,
 		controllerAs: name,
 		controller: ViewAgora
 	})

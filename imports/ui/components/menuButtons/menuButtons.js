@@ -9,8 +9,8 @@ class MenuButtons {
   constructor($stateParams, $scope, $reactive) {
     'ngInject';
     $reactive(this).attach($scope);
-    console.log('menuButtons Controller !!!!!!!!!!!!!');
-    console.log(this.items);
+    //console.log('menuButtons Controller !!!!!!!!!!!!!');
+    //console.log(this.items);
   }
 
 }
@@ -24,7 +24,7 @@ export default angular.module( name, [
             items: '<',
             classes: '@'
         },
-        templateUrl: template,
+        template,
         controller: MenuButtons,
     }
 );

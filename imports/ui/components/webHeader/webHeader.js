@@ -17,7 +17,7 @@ export default angular.module(name, [
   angularMeteor,
   webNavigation ])
   .component(name, {
-    templateUrl: template,
+    template,
     controller: WebHeader
   });
 //TODO: el elemento <web-navigation></web-navigation> se ve en webHeader sin añadirlo desde config(), y funciona el cambio de estado.

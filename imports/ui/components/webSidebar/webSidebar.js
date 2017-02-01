@@ -28,6 +28,6 @@ export default angular.module( name, [
   chartsPie
 ])
   .component(name, {
-    templateUrl: template,
+    template,
     controller: WebSidebar,
   });

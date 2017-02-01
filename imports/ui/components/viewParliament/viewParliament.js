@@ -26,7 +26,7 @@ class ViewParliament {
 // create a module
 export default angular.module(name, [angularMeteor])
 	.component(name, {
-		templateUrl: template,
+		template,
 		controller: ViewParliament
 	})
 	.config(config);

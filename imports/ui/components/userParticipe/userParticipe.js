@@ -23,7 +23,7 @@ export default angular.module( name, [
         bindings: {
             agora: '&',
         },
-        templateUrl: template,
+        template,
         controller: UserParticipe,
     }
 );

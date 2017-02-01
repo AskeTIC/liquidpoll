@@ -10,7 +10,7 @@ class ChartsPie {
   constructor($stateParams, $scope, $reactive) {
     'ngInject';
     $reactive(this).attach($scope);
-    
+
     //TODO: mover a algún módulo y/o paquete
     /*
     for (var i = 0; i < answers.length; i++) {
@@ -31,7 +31,7 @@ export default angular.module(name, [angularMeteor])
       options: '<', //IMPORTANT: Si se pasa  @ es un string, no puedes pasar otra cosa.
       slug: '<'
     },
-		templateUrl: template,
+		template,
 		controllerAs: name,
 		controller: ChartsPie
 	});

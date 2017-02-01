@@ -22,7 +22,7 @@ export default angular.module( name, [
         items: '<' //podrá recibir un atributo bars="string" en el elemento HTML. Con un objeto en string.
         //IMPORTANT: Si se pasa  @ es un string, no puedes pasar otra cosa.
       },
-      templateUrl: template,
+      template,
       controller: WebNavigation,
     }
 );

@@ -65,6 +65,6 @@ export default angular.module(name, [angularMeteor])
             onChangeBars: '&',
             slug: '@'
         },
-        templateUrl: template,
+        template,
     	controller: ChartsBars
 	});

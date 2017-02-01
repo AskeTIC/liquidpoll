@@ -24,7 +24,7 @@ export default angular.module(name, [
   viewParliamentList,
   viewParliament])
   .component(name, {
-    templateUrl: template,
+    template,
     controller: WebMain,
     controllerAs: name
   })
