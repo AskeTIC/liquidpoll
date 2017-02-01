@@ -15,7 +15,8 @@ class WebNavigation {
 
 // create a module with a componente
 export default angular.module( name, [
-  angularMeteor ])
+  angularMeteor,
+  'accounts.ui' ])
     .component(name, {
       bindings: {
         items: '<' //podrá recibir un atributo bars="string" en el elemento HTML. Con un objeto en string.
