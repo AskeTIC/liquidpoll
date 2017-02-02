@@ -10,7 +10,7 @@ import { name as chartsBars } from '../chartsBars/chartsBars';
 import { name as userVotes } from '../userVotes/userVotes';
 
 import template from './viewAgora.html';
-console.log(template);
+
 const name = 'viewAgora';
 
 class ViewAgora {
@@ -18,8 +18,27 @@ class ViewAgora {
     'ngInject';
     $reactive(this).attach($scope);
     console.log("viewAgora controller!");
+    var that = this;
     //console.log(this);
-    console.log($stateParams.agoraSlug);
+    //console.log($stateParams.agoraSlug);
+    //console.log(Meteor.userId());
+
+    //TODO: Conseguir extraer el último voto del usuario con la consulta.
+    var userVotes = [];
+    var count = -1;
+    var foo = Agoras.find({ 'slug': $stateParams.agoraSlug},{fields : {votes: 1, _id:0}}).fetch();
+    foo[0].votes.forEach(function(value, key){
+        //console.log(value);
+        if(value.user == Meteor.userId()){
+            //console.log('coincide!!!');
+            userVotes.push(value);
+            count +=1;
+        }
+        //console.log(count);
+    })
+    //console.log(userVotes);
+    var lastVote = userVotes[count];
+    console.log(lastVote);
 
     //TODO: Emitir este evento cuando cambia los datos de la susbcripción.
     //$scope.$broadcast('change-entities'); //Esto es para un solo cliente, no hay sincronización.
@@ -44,21 +63,32 @@ class ViewAgora {
             console.log('Helper!!!!!!!!!!!!!!!!!!!!');
             return options;
         },
-        //Es reactivo por defecto por que estamos en una fuente de datos reactiva,
-        //DDP usa Tracker por defecto si se está subscrito un cliente actualiza los datos en tiempo real.
+        lastVote() {
+            console.log('Helper userVote!!!!');
+            return lastVote;
+        },
         agora() {
+            //Es reactivo por defecto por que estamos en una fuente de datos reactiva,
+            //DDP usa Tracker por defecto si se está subscrito un cliente actualiza los datos en tiempo real.
             //TOKNOW: Aunque cambia el valor del helper no se refresca el scope, esto es por el funcionamiento de $reactive con this, quizás.
             //Si que ocurre que si cambia la fuente de datos reactiva en el helper se cambia en la vista, pero no si es una variable en this.
             //Esto es posible por que $reactive envuelve $scope y pasamos a volver a usar this y las variables realmente bindeadas a la vista solo son las de los helpers.
             //Y además la vista se refresca usando React en lugar de Angular, por lo que no se refresca cuando cambian las variables del controller.
             return Agoras.findOne({'slug': $stateParams.agoraSlug});
         },
-        userVote(){
-            return function({entities}){
-                console.log(entities);
+        addVote(){
+            return function({vote}){
+                //Actualizar la variable vote.
+                that.lastVote.date = new Date();
+                that.lastVote.entity = vote.siglas;
+
+                //introducir el voto en el agora
+                that.agora.votes.push(that.lastVote);
+
+                //Guardar el array de entities de nuevo y el array votes.
                 Agoras.update(
-                    { _id: this.agora._id},
-                    { $set: { entities: entities } }
+                    { _id: that.agora._id},
+                    { $set: { entities: that.agora.entities, votes: that.agora.votes } }
                 );
             }
         }

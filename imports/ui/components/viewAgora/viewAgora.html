@@ -4,7 +4,11 @@
         <charts-bars ng-if="viewAgora.agora" entities="viewAgora.agora.entities" options="viewAgora.options"></charts-bars>
     </header>
     <main>
-        <user-votes on-user-vote="viewAgora.userVote($event)" entities="viewAgora.agora.entities"></user-votes>
+        <user-votes ng-if="viewAgora.agora"
+                    last-vote="viewAgora.lastVote"
+                    entities="viewAgora.agora.entities"
+                    on-user-vote="viewAgora.addVote($event)">
+        </user-votes>
     </main>
     <aside>
         <menu-buttons class="subareas" classes="button-area" items="viewAgora.agora.subagoras">
