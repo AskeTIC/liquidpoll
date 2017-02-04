@@ -1,4 +1,3 @@
-import { Meteor } from 'meteor/meteor';
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 //import angularElastic from 'angular-elastic';
@@ -8,7 +7,7 @@ import { name as webSidebar } from '../imports/ui/components/webSidebar/webSideb
 import { name as webHeader } from '../imports/ui/components/webHeader/webHeader';
 import { name as webFooter } from '../imports/ui/components/webFooter/webFooter';
 
-angular.module('webapp', [
+var app = angular.module('webapp', [
   angularMeteor,
   webMain,
   webSidebar,
@@ -16,19 +15,16 @@ angular.module('webapp', [
   webFooter
 ]);
 
-Meteor.subscribe('agoras', {
-    onStart: function () {
-      console.log("Subscrito a todas las agoras");
-    },
-    onReady: function () {
-      console.log("Preparada la subscripcion y los items han llegado");
-      //subscriptionHandle.stop();  // Stopping the subscription, will cause onStop to fire
-    },
-    onStop: function (error) {
-      if (error) {
-        console.log('An error happened - ', error);
-      } else {
-        console.log('The subscription stopped');
-      }
-    }
-})
+app.$inject = ["$rootScope"];
+
+app.config(configWebapp);
+app.run(runWebapp);
+
+function configWebapp(){
+    console.log('config() de webapp.......');
+}
+
+function runWebapp($rootScope){
+    console.log("run() de webapp ......");
+    $rootScope.userId = Meteor.userId();
+}
