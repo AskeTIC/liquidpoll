@@ -15,9 +15,24 @@ class ViewAgoraList {
     'ngInject';
     $reactive(this).attach($scope);
 
-    //TODO: Emitir este evento cuando cambia los datos de la susbcripción.
-    //$scope.$broadcast('change-entities'); //Esto es para un solo cliente, no hay sincronización.
+    this.subscribe('agoras', null, {
+        onStart: function () {
+          console.log("Subscrito a todas las agoras");
+        },
+        onReady: function () {
+          console.log("Preparada la subscripcion y los items han llegado");
+          //subscriptionHandle.stop();  // Stopping the subscription, will cause onStop to fire
+        },
+        onStop: function (error) {
+          if (error) {
+            console.log('An error happened - ', error);
+          } else {
+            console.log('The subscription stopped');
+          }
+        }
+    })
 
+    //Options para la creación de la chart.
     var options = {
         bar : {
             width: 22,
@@ -28,6 +43,12 @@ class ViewAgoraList {
             height: 1,
             ctx: '2d'
         }
+    }
+
+    this.$onChanges = function(changes){
+        console.log('On Changes in viewAgoraList!!');
+        //TODO: Emitir este evento cuando cambia los datos de la susbcripción.
+        $scope.$broadcast('changes-in-agoras'); //Esto es para un solo cliente, no hay sincronización.
     }
 
     this.helpers({

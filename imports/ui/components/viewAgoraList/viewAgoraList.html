@@ -2,7 +2,10 @@
     <article class="" ng-repeat="agora in viewAgoraList.agoras">
         <header class="article-header">
             <h1 class="article-title" ui-sref="agora({agoraSlug: agora.slug})">
-                <span class="article-title-text"><span class="article-title-text-agora">ÁGORA</span> {{agora.name | uppercase}}</span>
+                <span class="article-title-text">
+                    <span class="article-title-text-agora">ÁGORA</span>
+                    {{agora.name | uppercase}}
+                </span>
             </h1>
             <p>Puedes participar!</p>
             <menu-buttons classes="button-area" items="agora.subagoras">
@@ -12,7 +15,10 @@
             </menu-buttons>
         </header>
         <main class="article-main">
-            <charts-bars slug="{{agora.slug}}" entities="agora.entities" options="viewAgoraList.options"></charts-bars>
+            <!-- entities="viewAgoraList.entities[index]" -->
+            <charts-bars slug="{{agora.slug}}"
+                         options="viewAgoraList.options">
+            </charts-bars>
         </main>
         <footer class="article-footer">
             <button class="button button-social" >INVITAR</button>
