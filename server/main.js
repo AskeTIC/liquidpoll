@@ -7,7 +7,9 @@ import {Surveys} from '../imports/api/surveys/surveys';
 //console.log(Agoras);
 
 import pubsAgoras from '../imports/api/agoras/server/publications';
+import pubsSettingsUsers from '../imports/api/settings-users/server/publications';
 pubsAgoras();
+pubsSettingsUsers();
 
 
 Meteor.startup(() => {
@@ -244,6 +246,13 @@ Meteor.startup(() => {
                 }
             ],
             'topagoras': [
+            ],
+            'votes' : [
+                {
+                    user: 'BgyZB9Q2skbdHjzYm',
+                    date: 'A mi hora!!!',
+                    entity: 'FxV'
+                }
             ],
             'settings' : {
               'nodes' : [1],
