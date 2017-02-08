@@ -33,14 +33,14 @@ export default angular.module(name, [
 
   function config($locationProvider, $urlRouterProvider) {
     'ngInject';
-
+    console.log('config() de webMain.......');
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
   }
 
   function run($rootScope, $state) {
     'ngInject';
-
+    console.log('run() de webMain......');
     $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
       if (error === 'AUTH_REQUIRED') {
         $state.go('app');

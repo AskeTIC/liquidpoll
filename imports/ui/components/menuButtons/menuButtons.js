@@ -11,6 +11,13 @@ class MenuButtons {
     $reactive(this).attach($scope);
     //console.log('menuButtons Controller !!!!!!!!!!!!!');
     //console.log(this.items);
+
+    this.$onChanges = function(changes){
+        console.log('On Changes in menu Buttons!! XD');
+        //console.log(changes);
+    }
+
+
   }
 
 }
