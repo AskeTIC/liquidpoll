@@ -14,10 +14,11 @@
                 </h2>
             </menu-buttons>
         </header>
+        <!-- {{agora.entities}}-->
         <main class="article-main">
-            <!-- entities="viewAgoraList.entities[index]" -->
-            <charts-bars slug="{{agora.slug}}"
-                         options="viewAgoraList.options">
+            <!-- entities="viewAgoraList.entities[$index]" | ng-if="viewAgoraList.entitiesArray.length > 0"-->
+            <charts-bars options="viewAgoraList.options"
+                         entities="agora.entities">
             </charts-bars>
         </main>
         <footer class="article-footer">

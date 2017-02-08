@@ -11,7 +11,7 @@ class UserVotes {
         $reactive(this).attach($scope);
         console.log('userVotes Controller !!!!!!!!!!!!!');
         var that = this;
-        //console.log(this.entities);
+        console.log(this.entities);
         //console.log(this.lastVote);
 
         //TODO: Dependiendo el type de votación vote deberá de funcionar de una manera u otra

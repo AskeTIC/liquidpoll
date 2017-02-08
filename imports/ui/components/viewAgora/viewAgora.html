@@ -1,11 +1,22 @@
 <section class="section-single">
+    <!-- pruebas
+    <button  ng-click="viewAgora.change()">Change name subagora</button>
+    <button  ng-click="viewAgora.change2()">New subagora</button>
+    <button  ng-click="viewAgora.change3()">New agora</button>
+    <button  ng-click="viewAgora.change4()">Autorun()</button>
+    {{viewAgora.myVar}}
+    <button  ng-click="viewAgora.change5()">NO Autorun()</button>
+    {{viewAgora.foo}}
+    -->
     <header>
         <h1 class="section-title">Ágora {{viewAgora.agora.name}}</h1>
-        <charts-bars ng-if="viewAgora.agora" entities="viewAgora.agora.entities" options="viewAgora.options"></charts-bars>
+        <!-- ng-if="viewAgora.entities"-->
+        <charts-bars entities="viewAgora.agora.entities"
+                     options="viewAgora.options">
+        </charts-bars>
     </header>
     <main>
-        <user-votes ng-if="viewAgora.agora"
-                    last-vote="viewAgora.lastVote"
+        <user-votes last-vote="viewAgora.lastVote"
                     entities="viewAgora.agora.entities"
                     on-user-vote="viewAgora.addVote($event)">
         </user-votes>
