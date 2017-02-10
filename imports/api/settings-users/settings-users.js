@@ -1,5 +1,5 @@
 import { Mongo } from 'meteor/mongo';
-export const SettingsUsers = new Mongo.Collection('settings-users');
+export const SettingsUsers = new Mongo.Collection('settings_users');
 
 SettingsUsers.allow({
     insert(userId, participant) {
