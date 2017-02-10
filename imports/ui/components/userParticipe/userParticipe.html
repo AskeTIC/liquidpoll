@@ -1,5 +1,6 @@
-<p ng-hide="$ctrl.participe">¿Que partido te representa más?</p>
-<div ng-show="$ctrl.participe">
-    <span>APOYAS A:</span>{{$ctrl.vote.entity}}
-    <span>DESDE:</span>{{$ctrl.vote.date}}
+<p ng-show="$ctrl.userParticipation === undefined">¿Que partido te representa más?</p>
+<p ng-show="$ctrl.userParticipation === null">No puedes participar, pero puedes compartir</p>
+<div ng-show="$ctrl.userParticipation">
+    <span>APOYAS A: </span>{{$ctrl.userParticipation.current.entitySlug}} <br />
+    <span>DESDE: </span>{{$ctrl.userParticipation.current.date}}
 </div>

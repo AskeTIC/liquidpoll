@@ -6,6 +6,8 @@ import { Agoras } from '../../../api/agoras/agoras'; //this cursors is going to 
 
 //Componentes incluidos (dependencias)
 import { name as chartsBars } from '../chartsBars/chartsBars';
+import { name as userParticipe } from '../userParticipe/userParticipe';
+
 
 import template from './viewAgoraList.html';
 const name = 'viewAgoraList';
@@ -16,6 +18,26 @@ class ViewAgoraList {
         $reactive(this).attach($scope);
         var that = this;
         console.log(`viewAgoraList() controller`);
+
+        /*No tiene sentido crear una subscripcion por agora puesto que no va a ver el cambio más que el,
+        y creariamos 6-8 subscripciones para objetos pequeños,
+        mejor una para todas las participaciones del user.*/
+        this.subscribe('user-participe', null, {
+            onStart: function () {
+                console.log("Subscrito a 'user-participe'");
+            },
+            onReady: function () {
+                console.log("Preparada la subscripcion a 'user-participe' y el item ha llegado");
+                $scope.$broadcast('user-participe');
+            },
+            onStop: function (error) {
+                if (error) {
+                    console.log('An error happened - ', error);
+                } else {
+                    console.log("La subscripcion a 'user-participe' se ha cancelado");
+                }
+            }
+        });
 
         //Options para la creación de la chart.
         var options = {
@@ -45,6 +67,7 @@ class ViewAgoraList {
 export default angular.module(name, [
   angularMeteor,
   uiRouter,
+  userParticipe,
   chartsBars])
 	.component(name, {
 		template,
