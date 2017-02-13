@@ -1,15 +1,11 @@
 /* RESOLUCION GENERAL (MOBILE FIRST)*/
 /*ESTILOS GENERALES*/
 * {
+	margin:0;
+	padding:0;
 	color:black;
 	font-size:16px;
 	font-family:Sans-serif;
-}
-
-html, body, menu, h1, h2, h3, h4, h5, h6, span,
-header, main, aside, footer, section, article, img, nav, ul, li{
-	margin:0;
-	padding:0;
 }
 
 html, body {
@@ -617,4 +613,8 @@ web-sidebar {
 .section-single .chart-bars, .section-list .chart-bars{
 	border-left: 3px solid black;
 	border-bottom: 3px solid black;
+}
+
+.chart-bars article {
+	border: 1px solid black;
 }

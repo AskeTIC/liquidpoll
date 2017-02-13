@@ -41,14 +41,9 @@ class ViewAgoraList {
 
         //Options para la creación de la chart.
         var options = {
-            bar : {
-                width: 22,
-                div: 1,
-            },
-            canvas : {
-                width: 1,
-                height: 1,
-                ctx: '2d'
+            width : {
+                bar: 3,
+                space: 1
             }
         }
 

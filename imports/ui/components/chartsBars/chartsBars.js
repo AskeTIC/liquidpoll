@@ -1,43 +1,32 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import {Bars} from 'asketic-charts';
-import {default as utils} from 'asketic-utils';
-
 import { Agoras } from '../../../api/agoras/agoras'; //this cursors is going to work with monimongo
 
 import template from './chartsBars.html'; //url con angular-templates, string con urigo:string-templates
 const name = 'chartsBars';
 
 class ChartsBars{
-    constructor($stateParams, $state, $scope, $reactive, $element) {
+    constructor($stateParams, $state, $scope, $rootScope, $reactive, $element) {
         'ngInject';
         $reactive(this).attach($scope);
         console.log('ChartsBars Controller !!!!!!!!!!!!!');
         var that = this;
         console.log(this.entities);
 
-
-        this._sortEntities = function(entities){
-            //ordenar el array de menor a mayor e invertir
-            //TODO: mejorar arraySort() para invertir en los 2 ordenes y por X atributo.
-            utils.arraySort(entities);
-            entities.reverse();
+        //Lifecycle hooks
+        this.$onInit = function(){
+            console.log('On Init!! XD');
+            that.barsChart = new Bars($element[0].childNodes[0], this.options, this.entities);
+            //console.log(this.barsChart);
         }
 
-        this._sortEntities(this.entities);
-        this.barsChart = new Bars($element[0].childNodes[0], this.options, this.entities);
-        console.log(this.barsChart);
-
-
-        //Lifecycle hooks
         this.$onChanges = function(changes){
             console.log('On Changes!! XD');
             console.log(changes);
             //Si no son los primeros cambios (la creación del controller)...
             //console.log(that.barsChart); //null
-            that.barsChart.clearCanvas();
-            that._sortEntities(that.entities);
-            that.barsChart.setBars(that.entities);
+            //that.barsChart.setBars(that.entities);
         }
         /*
         this.autorun(() => {

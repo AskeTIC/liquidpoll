@@ -40,14 +40,9 @@ class ViewAgora {
         console.log(lastVote);
 
         var options = {
-            bar : {
-                width: 50,
-                div: 1.5,
-            },
-            canvas : {
-                width: 1,
-                height: 200,
-                ctx: '2d'
+            width : {
+                bar: 3,
+                space 1
             }
         }
         /*
