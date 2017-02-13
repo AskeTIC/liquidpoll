@@ -1,6 +1,6 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
-import {Bars} from 'asketic-charts';
+import {BarsCanvas} from 'asketic-charts';
 import {default as utils} from 'asketic-utils';
 
 import { Agoras } from '../../../api/agoras/agoras'; //this cursors is going to work with monimongo
@@ -25,7 +25,7 @@ class ChartsBars{
         }
 
         this._sortEntities(this.entities);
-        this.barsChart = new Bars($element[0].childNodes[0], this.options, this.entities);
+        this.barsChart = new BarsCanvas($element[0].childNodes[0], this.options, this.entities);
         console.log(this.barsChart);
 
 
