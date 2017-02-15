@@ -131,6 +131,7 @@ class ViewAgora {
             },
             addVote(){
                 return function({vote}){
+                    console.log("modificando lastVote e insertandolo!!!!");
                     //Actualizar la variable vote.
                     that.lastVote.date = new Date();
                     that.lastVote.entity = vote.siglas;

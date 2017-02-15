@@ -17,24 +17,30 @@ class UserVotes {
         //TODO: Dependiendo el type de votación vote deberá de funcionar de una manera u otra
         //o usar un servicio con métodos para cada type.
         this.vote = function(entity){
-            that.entities.forEach(function(value, key){
-                //TODO: Angular crea unas claves en los objetos que itera con ngRepeat,
-                //Urigo dice que usarndo los helpers se soluciona, pero no veo como, he tenido que usar el delete.
-                //por lo tanto no estamos libres de que aparezca otra clave de angular que Mongo no permita insertar.
-                delete value.$$hashKey;
-                if(entity.siglas === value.siglas){
-                    console.log('sumado voto!!');
-                    value.points += 1;
-                    //console.log(value);
-                }
-                if(that.lastVote.entity === value.siglas){
-                    console.log('eliminado voto!!');
-                    value.points = value.points - 1;
-                    //console.log(value);
-                }
-            });
-            this.lastVote.entity = entity.siglas;
-            that.onUserVote({$event: {vote: entity}});
+            //Si es desigual actualizamos
+            if(that.lastVote.entity !== entity.siglas){
+                console.log("CAMBIANDO VOTO");
+                that.entities.forEach(function(value, key){
+                    //TODO: Angular crea unas claves en los objetos que itera con ngRepeat,
+                    //Urigo dice que usarndo los helpers se soluciona, pero no veo como, he tenido que usar el delete.
+                    //por lo tanto no estamos libres de que aparezca otra clave de angular que Mongo no permita insertar.
+                    delete value.$$hashKey;
+                    if(entity.siglas === value.siglas){
+                        console.log('sumado voto!!');
+                        value.points += 1;
+                        //console.log(value);
+                    }
+                    if(that.lastVote.entity === value.siglas){
+                        console.log('eliminado voto!!');
+                        value.points = value.points - 1;
+                        //console.log(value);
+                    }
+                });
+                that.onUserVote({$event: {vote: entity}});
+            //si es el mismo no actualizamos.
+            }else{
+                console.log("MISMO VOTO");
+            }
         };
     }
 
@@ -49,8 +55,7 @@ export default angular.module( name, [
             votes: '<',
             lastVote: '<',
             onUserVote: '&',
-            type: '@', //TODO: future, type vote (Borda, Unique, Multiple, Multiple Rating, etc...)
-            test: '@'
+            type: '@' //TODO: future, type vote (Borda, Unique, Multiple, Multiple Rating, etc...)
         },
         template,
         controller: UserVotes,
