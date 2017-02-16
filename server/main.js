@@ -11,6 +11,10 @@ import pubsSettingsUsers from '../imports/api/settings-users/server/publications
 pubsAgoras();
 pubsSettingsUsers();
 
+Accounts.config({
+    sendVerificationEmail: true
+});
+
 Accounts.onCreateUser(function(options, user) {
     console.log("onCreateUser() ..........");
     var newProfile = { loggings : 0 }
