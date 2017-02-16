@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
 import {Settings} from '../imports/api/settings/settings';
 import {SettingsUsers} from '../imports/api/settings-users/settings-users';
 import {Parliaments} from '../imports/api/parliaments/parliaments';
@@ -9,6 +10,13 @@ import pubsAgoras from '../imports/api/agoras/server/publications';
 import pubsSettingsUsers from '../imports/api/settings-users/server/publications';
 pubsAgoras();
 pubsSettingsUsers();
+
+Accounts.onCreateUser(function(options, user) {
+    console.log("onCreateUser() ..........");
+    var newProfile = { loggings : 0 }
+    user.profile = newProfile;
+    return user;
+});
 
 Meteor.startup(() => {
     // code to run on server at startup
