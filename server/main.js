@@ -17,6 +17,15 @@ Accounts.config({
 
 Accounts.onCreateUser(function(options, user) {
     console.log("onCreateUser() ..........");
+    //console.log(user);
+    
+    //Crear documento en la colección settings_users
+    SettingsUsers.insert({
+        'user_id': user._id,
+        'participation_agoras': [],
+        'participation_parliaments': []
+    })
+
     var newProfile = { loggings : 0 }
     user.profile = newProfile;
     return user;
