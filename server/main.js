@@ -18,10 +18,10 @@ Accounts.config({
 Accounts.onCreateUser(function(options, user) {
     console.log("onCreateUser() ..........");
     //console.log(user);
-    
+
     //Crear documento en la colección settings_users
     SettingsUsers.insert({
-        'user_id': user._id,
+        '_id': user._id,
         'participation_agoras': [],
         'participation_parliaments': []
     })
