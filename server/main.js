@@ -15,9 +15,10 @@ Accounts.config({
     sendVerificationEmail: true
 });
 
+//TODO: Pedir permisos de user_location para ubicar al user vía el perfil de facebook.
 Accounts.onCreateUser(function(options, user) {
     console.log("onCreateUser() ..........");
-    //console.log(user);
+    console.log(user);
 
     //Crear documento en la colección settings_users
     SettingsUsers.insert({
@@ -26,7 +27,10 @@ Accounts.onCreateUser(function(options, user) {
         'participation_parliaments': []
     })
 
-    var newProfile = { loggings : 0 }
+    var newProfile = {
+        loggings : 0,
+        name: user.services.facebook.name
+    }
     user.profile = newProfile;
     return user;
 });
@@ -696,31 +700,3 @@ var agora = { "name" : "Francia",
           };
 
 //Agoras.insert(agora);
-//Agoras.remove({"_id" : "HdPQMCtzX8wgggrWf"});
-
-const settingsUsers = [
-    {
-        "_id" : "GDGQc3gbC6jowk9Fn",
-        "participation-agoras": [
-            {
-                'name': 'argentina',
-                'current': {
-                    'entity-siglas': 'FxD',
-                    'date': new Date()
-                }
-            },
-            {
-                'name': 'españa',
-                'current': {
-                    'entity-siglas': 'PACMA',
-                    'date': new Date()
-                }
-            }
-        ],
-        "participation-parliaments": [
-        ]
-    }
-];
-//settingsUsers.forEach((setting) => {
-//    SettingsUsers.insert(setting);
-//});
