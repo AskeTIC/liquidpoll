@@ -31,6 +31,9 @@ function configWebapp($stateProvider, $locationProvider, $urlRouterProvider) {
     //Si es una vista no activa no funcionará un $state.go() si el config es el que define el 'state'
     //por lo que hay que definirlos en el config del módulo principal
     $stateProvider
+        .state('app', {
+            url: '/'
+        })
         .state('dashboard', {
             url: '/dashboard',
             template: '<view-user-dashboard></view-user-dashboard>',
@@ -49,6 +52,7 @@ function configWebapp($stateProvider, $locationProvider, $urlRouterProvider) {
 
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
+
 }
 
 function runWebapp($rootScope, WebAppConf){
@@ -56,4 +60,9 @@ function runWebapp($rootScope, WebAppConf){
     $rootScope.userId = Meteor.userId();
     WebAppConf.onLogin();
 
+    $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
+        if (error === 'AUTH_REQUIRED') {
+            //$state.go('app');
+        }
+    });
 }
