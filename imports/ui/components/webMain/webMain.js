@@ -6,6 +6,7 @@ import { name as viewParliamentList } from '../viewParliamentList/viewParliament
 import { name as viewAgoraList } from '../viewAgoraList/viewAgoraList';
 import { name as viewParliament } from '../viewParliament/viewParliament';
 import { name as viewAgora } from '../viewAgora/viewAgora';
+import { name as viewUserDashboard } from '../viewUserDashboard/viewUserDashboard';
 import { name as menuButtons } from '../menuButtons/menuButtons';
 
 
@@ -16,34 +17,34 @@ class WebMain {}
 
 // create a module with a componente
 export default angular.module(name, [
-  uiRouter,
-  angularMeteor,
-  menuButtons,
-  viewAgoraList,
-  viewAgora,
-  viewParliamentList,
-  viewParliament])
-  .component(name, {
-    template,
-    controller: WebMain,
-    controllerAs: name
-  })
-  .config(config)
-  .run(run);
+        uiRouter,
+        angularMeteor,
+        menuButtons,
+        viewAgoraList,
+        viewAgora,
+        viewParliamentList,
+        viewParliament,
+        viewUserDashboard
+    ])
+    .component(name, {
+        template,
+        controller: WebMain,
+        controllerAs: name
+    })
+    .config(config)
+    .run(run);
 
-  function config($locationProvider, $urlRouterProvider) {
-    'ngInject';
-    console.log('config() de webMain.......');
-    $locationProvider.html5Mode(true);
-    $urlRouterProvider.otherwise('/');
-  }
+    function config($locationProvider, $urlRouterProvider) {
+        'ngInject';
+        console.log('config() de webMain.......');
+    }
 
-  function run($rootScope, $state) {
-    'ngInject';
-    console.log('run() de webMain......');
-    $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
-      if (error === 'AUTH_REQUIRED') {
-        $state.go('app');
-      }
+    function run($rootScope, $state) {
+        'ngInject';
+        console.log('run() de webMain......');
+        $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
+          if (error === 'AUTH_REQUIRED') {
+            $state.go('app');
+          }
     });
-  }
+}
