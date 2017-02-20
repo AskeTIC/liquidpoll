@@ -1,6 +1,6 @@
 # LiquidPoll
 
-[![Build Status][1]][2] [![Code Climate][5]][6]]
+[![Build Status][1]][2] [![Code Climate][5]][6]
 
 ## Get start
 
@@ -26,8 +26,8 @@ See this small guide [contributing].
 
 See this list of [contributors].
 
-[1]: https://api.travis-ci.org/influyentes/influyentes-app.svg?branch=master
-[2]: https://travis-ci.org/influyentes/influyentes-app
+[1]: https://api.travis-ci.org/AskeTIC/liquidpoll.svg?branch=master
+[2]: https://travis-ci.org/AskeTIC/liquidpoll
 
 [5]: https://codeclimate.com/github/influyentes/influyentes-app/badges/gpa.svg
 [6]: https://codeclimate.com/github/influyentes/influyentes-app
