@@ -19,12 +19,38 @@ Accounts.config({
 Accounts.onCreateUser(function(options, user) {
     console.log("onCreateUser() ..........");
     console.log(user);
-
+    //console.log(options);
+    //TODO: En base a user_location que ha de lleguar en user.services.facebook
+    // insertar un objeto por agora y parliament en el que el user podrá participar.
+    // De momento estos son datos de prueba para mi user a espera de la activación de user_location por facebook y
+    //poder ir desarrollando el componente userParticipe y el servicio de asignación de agoras.
+    var userAreas = [
+        {
+            'slug': 'vitoria-gasteiz',
+            'current': null
+        },
+        {
+            'slug': 'araba',
+            'current': null
+        },
+        {
+            'slug': 'euskadi',
+            'current': null
+        },
+        {
+            'slug': 'españa',
+            'current': null
+        },
+        {
+            'slug': 'europe',
+            'current': null
+        }
+    ];
     //Crear documento en la colección settings_users
     SettingsUsers.insert({
         '_id': user._id,
-        'participation_agoras': [],
-        'participation_parliaments': []
+        'participation_agoras': userAreas,
+        'participation_parliaments': userAreas
     })
 
     var newProfile = {
@@ -37,8 +63,6 @@ Accounts.onCreateUser(function(options, user) {
 
 Meteor.startup(() => {
     // code to run on server at startup
-    if(SettingsUsers.find().count() === 0){
-    }
     if(Settings.find().count() === 0){
         const settings = [{
             'node' : 0,
