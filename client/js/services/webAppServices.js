@@ -11,7 +11,7 @@ export default angular.module(name, [])
 
 
 //Wrapper for Login logic in config webapp
-function cbWebAppConf($state){
+function cbWebAppConf($state, $rootScope){
     console.log("WebAppServices Factory instanciada!!");
     var onLogin = function(){
         Accounts.onLogin(function(){
@@ -29,6 +29,22 @@ function cbWebAppConf($state){
             //console.log(Meteor.userId());
             Meteor.users.update({ "_id": Meteor.userId()}, { $set : {"profile": user.profile}});
 
+            Meteor.subscribe('user-participe', null, {
+                onStart: function () {
+                    console.log("Subscrito a 'user-participe'");
+                },
+                onReady: function () {
+                    console.log("Preparada la subscripcion a 'user-participe'");
+                    $rootScope.$broadcast('user-participe');
+                },
+                onStop: function (error) {
+                    if (error) {
+                        console.log('An error happened - ', error);
+                    } else {
+                        console.log("La subscripcion a 'user-participe' se ha cancelado");
+                    }
+                }
+            });
         });
 
     }
