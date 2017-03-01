@@ -13,38 +13,107 @@ class UserParticipe {
         $reactive(this).attach($scope);
         console.log('userParticipe Controller !!!!!!!!!!!!!');
         var that = this;
-        this.userParticipation;
-        //console.log(this.agora)
-        //TOKNOW: Si no espero a un evento de que han llegado los datos, se muestran por la reactividad,
-        //pero no puedo trabajar con el cursor puesto que no han llegado los datos.
-        //TOKNOW: Tampoco puede ponerlo en el helper puesto que se pretende renderizar antes del evento y es undefined.
-        $scope.$on('user-participe', function(event){
-            //Mongo no permite extraer en la proyección un objeto de un array y evitaría recorrer tanto después.
-            //TODO: Mejorar si se puede.
-            var participation = SettingsUsers.findOne({}, {fields : { 'participation-agoras': 1}});
-            console.log(participation);
-            participation["participation-agoras"].forEach(function(value, key){
-                console.log('FOR EACH!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-                console.log(value);
-                if(value.name == that.agora){
-                    if(value.current.agoraSlug !== ''){
-                        that.userParticipation = value;
-                        console.log(that.userParticipation);
-                    }else{
-                        //TODO: Cuando se crea el user, y se le localiza,
-                        //tiene que crearse el objeto de cada agora, con current con strings vacios.
-                        console.log('puedes participar!!');
-                    }
-                }else{
-                    //No puedes participar
-                    console.log('NO, puedes participar!!');
-                    that.userParticipation = null;
-                }
-            });
+        console.log(this.slug);
+        this.userPart = null;
+        this.getReactively('userPart');
+        console.log(this.userPart);
+        //console.log(Meteor.userId());
+
+        /*
+        setTimeout(this.$bindToContext(function(err){
+            console.log("setinterval!")
+            if(that.userPart === null){
+                that.userPart = undefined;
+                console.log(that.userPart);
+            }else{
+                that.userPart = null;
+                console.log(that.userPart);
+            }
+            //console.log(that.num);
+        }), 3000);
+        */
+
+        /*
+        this._getCurrentFakeParticipation = function(){
+            console.log("setinterval!")
+            if(that.userPart === null){
+                that.userPart = undefined;
+                console.log(that.userPart);
+            }else{
+                that.userPart = null;
+                console.log(that.userPart);
+            }
+        }*/
+
+        /* si nos logueamos en una vista que no tenga instanciado este componente no se capta el evento 'user-participe' y no se cogen los datos.
+           Si solo usamos el $onInit() y nos hemos logueado en una vista que instancia este scope, en $onInit() aún no tenemos los datos de la subscripcion.
+        */
+        this.$onInit = function(changes){
+            console.log('$onInit userParticipe!! XD');
+            //console.log(changes);
+            that._getParticipation(that.$bindToContext(that._getCurrentParticipation));
+        }
+
+        $scope.$on('user-participe', function(){
+            console.log('$on -user-participe- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+            that._getParticipation(that.$bindToContext(that._getCurrentParticipation));
         });
 
-        this.helpers({
-        });
+        this._getParticipation = function(callback){
+            var participation = SettingsUsers.find({'_id': Meteor.userId()}).fetch();
+            //console.log(participation);
+            if(participation.length > 0){
+                console.log('hay datos, por que hay login XD');
+                //TODO: Pasarle agoras o parliaments.
+                callback(participation[0].participation_agoras);
+            }else{
+                console.log('no hay datos, por que no hay login :(');
+            }
+        }
+
+        this._getCurrentParticipation = function(participation){
+            //console.log(participation);
+            if(participation.length > 0){
+                participation = participation.filter(function(element){
+                    return element.slug === that.slug;
+                });
+
+                if(participation.length > 0){
+                    switch (participation[0].status) {
+                        case -1:
+                            console.log("provisionalmente no puedes participar, baneado");
+                            that.userPart = -1;
+                            console.log(that.userPart);
+                            break;
+                        case 0:
+                            console.log('puedes participar!!');
+                            that.userPart = undefined;
+                            console.log(that.userPart);
+                            break;
+                        case 1:
+                            console.log('hay participación');
+                            that.userPart = participation[0].current;
+                            console.log(that.userPart);
+                            break;
+                        default:
+                            console.log('ERROR: Debería de haber un status aceptado');
+                    }
+                }else{
+                    console.log("no puedes participar pero puedes compartir");
+                    that.userPart = 0;
+                    console.log(that.userPart);
+                }
+            }else{
+                console.log("ERROR: Debería de haber participación");
+            }
+        }
+
+        //Solo observa los bindings
+        this.$onChanges = function(changes){
+            console.log('On Changes desde userParticipe!!');
+            console.log(changes);
+            //this.$apply();
+        }
     }
 }
 
@@ -53,7 +122,7 @@ export default angular.module( name, [
     angularMeteor ])
     .component(name, {
         bindings: {
-            agora: '@',
+            slug: '@'
         },
         template,
         controller: UserParticipe
