@@ -27,23 +27,31 @@ Accounts.onCreateUser(function(options, user) {
     var userAreas = [
         {
             'slug': 'vitoria-gasteiz',
-            'current': null
+            'current': null,
+            'status' : 0
         },
         {
             'slug': 'araba',
-            'current': null
+            'current': null,
+            'status': -1
         },
         {
             'slug': 'euskadi',
-            'current': null
+            'current': {
+                entity: 'Euskal Herria Bildu',
+                date: new Date()
+            },
+            'status': 1
         },
         {
             'slug': 'españa',
-            'current': null
+            'current': null,
+            'status': 0
         },
         {
             'slug': 'europe',
-            'current': null
+            'current': null,
+            'status': -1
         }
     ];
     //Crear documento en la colección settings_users
