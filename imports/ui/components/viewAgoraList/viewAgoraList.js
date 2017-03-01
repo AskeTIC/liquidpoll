@@ -13,31 +13,11 @@ import template from './viewAgoraList.html';
 const name = 'viewAgoraList';
 
 class ViewAgoraList {
-    constructor($stateParams, $scope, $reactive) {
+    constructor($stateParams, $scope, $rootScope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
         var that = this;
         console.log(`viewAgoraList() controller`);
-
-        /*No tiene sentido crear una subscripcion por agora puesto que no va a ver el cambio más que el,
-        y creariamos 6-8 subscripciones para objetos pequeños,
-        mejor una para todas las participaciones del user.*/
-        this.subscribe('user-participe', null, {
-            onStart: function () {
-                console.log("Subscrito a 'user-participe'");
-            },
-            onReady: function () {
-                console.log("Preparada la subscripcion a 'user-participe' y el item ha llegado");
-                $scope.$broadcast('user-participe');
-            },
-            onStop: function (error) {
-                if (error) {
-                    console.log('An error happened - ', error);
-                } else {
-                    console.log("La subscripcion a 'user-participe' se ha cancelado");
-                }
-            }
-        });
 
         //Options para la creación de la chart.
         var options = {
@@ -77,15 +57,9 @@ export default angular.module(name, [
 	.config(config)
     .run(run);
 
-function config($stateProvider) {
+function config() {
     'ngInject';
     console.log(`config() de viewAgoraList.........`);
-    $stateProvider
-        .state('agoras', {
-            url: '/agoras',
-            template: '<view-agora-list></view-agora-list>'
-        }
-    );
 
     Meteor.subscribe('agoras', null, {
         onStart: function () {
