@@ -21,8 +21,6 @@ var app = angular.module('webapp', [
     WebAppServices
 ]);
 
-app.$inject = ['$rootScope', 'WebAppConf'];
-
 app.config(configWebapp);
 app.run(runWebapp);
 
@@ -54,6 +52,8 @@ function configWebapp($stateProvider, $locationProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
 }
+
+runWebapp.$inject = ['$rootScope', 'WebAppConf'];
 
 function runWebapp($rootScope, WebAppConf){
     console.log("run() de webapp ......");
